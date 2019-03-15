@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import de.auli.ph10zettel.R;
+import de.auli.ph10zettel.util.Logger;
 
 public class SessionStartFragment extends Fragment {
     private static final String TAG = SessionStartFragment.class.getSimpleName();
@@ -18,7 +19,7 @@ public class SessionStartFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Log.d(TAG, "--> onCreateView");
+        Logger.log(TAG, "you'r arrived --> onCreateView");
         View rootView = inflater.inflate(R.layout.fragment_sessionstart, container, false);
         return rootView;
     }

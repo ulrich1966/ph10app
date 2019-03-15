@@ -1,21 +1,34 @@
 <resources>
     <string name="app_name">Phase 10 Scores</string>
     <string name="appstart_head">Ergebinszettelkasten</string>
-    <string name="menu_creategroup">Gruppe anlegen</string>
-    <string name="menu_createplayer">Spieler anlegen</string>
-    <string name="menu_startsession">Spielrunde starten</string>
-    <string name="menu_group">Gruppen</string>
-    <string name="menu_player">Spieler</string>
-    <string name="menu_session">Spielrunden</string>
     <string name="entry1_footer">Erstellen und speichern Deiner\nPhase 10 Spielgergbisse</string>
     <string name="entry2_footer">Anlegen von Spielern und Spielergruppen</string>
     <string name="entry3_footer">Verwalten der Ergebnisse von Spielen in einer Spielrunde</string>
-    <string name="welcome_group">Hello Gruppe</string>
-    <string name="welcome_player">Hello Spieler</string>
-    <string name="welcome_session">Hello Spielrunde</string>
-    <string name="loremipsum">Lorem Ipsum</string>
-    <string name="lbl_session">Spielrunden verwalten</string>
+
+    <!-- Gruppe -->
+    <string name="menu_creategroup">Gruppe anlegen</string>
+    <string name="menu_group">Gruppen</string>
     <string name="lbl_group">Gruppen verwalten</string>
+    <string name="head_grouplist">Liste der angelgten Guppen</string>
+    <string name="welcome_group">Hallo Gruppe</string>
+
+    <!-- Player -->
+    <string name="menu_createplayer">Spieler anlegen</string>
+    <string name="menu_player">Spieler</string>
+    <string name="welcome_player">Hallo Spieler</string>
+    <string name="head_playerlist">Liste der angelgten Spielere</string>
     <string name="lbl_player">Spieler verwalten</string>
+
+    <!-- Session -->
+    <string name="menu_session">Spielrunden</string>
+    <string name="welcome_session">Hallo Spielrunde</string>
+    <string name="head_sessionlist">Liste der gespielten Runden</string>
+    <string name="lbl_session">Spielrunden verwalten</string>
+
+    <!-- Session Start -->
+    <string name="menu_startsession">Spielrunde starten</string>
     <string name="lbl_sessionstart">Spielrunde starten</string>
+    <string name="head_sessionstart">Für welche Gruppe möchtest Du eine Spielrunde starten?</string>
+
+    <string name="loremipsum">Lorem Ipsum</string>
 </resources>
