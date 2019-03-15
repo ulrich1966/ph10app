@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="de.auli.ph10zettel">
+    package="de.auli.ph10app">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -14,44 +14,44 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".MainActivity">
+        <activity android:name="de.auli.ph10app.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.SessionStartActivity"
+            android:name="de.auli.ph10app.activity.SessionStartActivity"
             android:label="@string/lbl_sessionstart"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName="de.auli.ph10app.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value="de.auli.ph10app.MainActivity" />
         </activity>
         <activity
-            android:name=".activity.GroupActivity"
+            android:name="de.auli.ph10app.activity.GroupActivity"
             android:label="@string/lbl_group"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName="de.auli.ph10app.MainActivity"
             tools:ignore="ExtraText">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value="de.auli.ph10app.MainActivity" />
         </activity>
-        <activity android:name=".activity.PlayerActivity"
+        <activity android:name="de.auli.ph10app.activity.PlayerActivity"
             android:label="@string/lbl_group"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName="de.auli.ph10app.MainActivity"
             tools:ignore="ExtraText">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value="de.auli.ph10app.MainActivity" />
         </activity>
-        <activity android:name=".activity.SessionActivity"
+        <activity android:name="de.auli.ph10app.activity.SessionActivity"
             tools:ignore="ExtraText"
             android:label="@string/lbl_session"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName="de.auli.ph10app.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value="de.auli.ph10app.MainActivity" />
         </activity>
     </application>
 

@@ -21,8 +21,8 @@
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/frgm_session"
-        android:name="de.auli.ph10zettel.fragment.SessionStartFragment"
-        class="de.auli.ph10zettel.fragment.SessionStartFragment"
+        android:name="de.auli.ph10app.fragment.SessionStartFragment"
+        class="de.auli.ph10app.fragment.SessionStartFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_gravity="start"

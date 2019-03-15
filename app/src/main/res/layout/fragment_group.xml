@@ -5,7 +5,7 @@
     android:id="@+id/frgm_layout_group"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="de.auli.ph10zettel.fragment.GroupFragment">
+    tools:context="de.auli.ph10app.fragment.GroupFragment">
 
     <TextView
         android:id="@+id/txt_frgm_group"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="de.auli.ph10zettel.activity.GroupActivity">
+    tools:context="de.auli.ph10app.activity.GroupActivity">
 
     <TextView
         android:id="@+id/txt_head_group"
@@ -18,7 +18,7 @@
 
     <fragment
         android:id="@+id/fragment_group"
-        android:name="de.auli.ph10zettel.fragment.GroupFragment"
+        android:name="de.auli.ph10app.fragment.GroupFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="0dp"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="de.auli.ph10zettel.activity.SessionActivity">
+    tools:context="de.auli.ph10app.activity.SessionActivity">
 
     <TextView
         android:id="@+id/txt_head_session"
@@ -18,7 +18,7 @@
 
     <fragment
         android:id="@+id/fragment_session"
-        android:name="de.auli.ph10zettel.fragment.SessionFragment"
+        android:name="de.auli.ph10app.fragment.SessionFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="0dp"
