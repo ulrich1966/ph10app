@@ -12,7 +12,7 @@ public class SessionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sessionstart);
+        setContentView(R.layout.activity_session);
         Logger.log(TAG, "your'r arrived --> onCreate");
     }
 }
