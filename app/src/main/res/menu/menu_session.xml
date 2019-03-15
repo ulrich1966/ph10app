@@ -8,6 +8,6 @@
         android:id="@+id/menu_empty"
         android:orderInCategory="50"
         android:title="@string/menu_creategroup"
-        android:onClick="actionEmpty"
+        android:onClick="actionNewGroup"
         app:showAsAction="never" />
 </menu>
