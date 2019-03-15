@@ -14,11 +14,12 @@ import android.view.View;
 import android.widget.Toast;
 
 import de.auli.ph10zettel.R;
+import de.auli.ph10zettel.handler.GroupHandler;
 import de.auli.ph10zettel.util.Logger;
 
 public class SessionStartActivity extends AppCompatActivity {
     private static final String TAG = SessionStartActivity.class.getSimpleName();
-    ActionBar actionBar = null;
+    private View rootView;
 
     public SessionStartActivity(){
         super();
@@ -29,11 +30,22 @@ public class SessionStartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "--> onCreate");
         setContentView(R.layout.activity_sessionstart);
+        //GroupHandler.getInstance().handelList(null);
     }
 
     @Override
     public View onCreateView(View parent, String name, Context context, AttributeSet attrs) {
-        return super.onCreateView(parent, name, context, attrs);
+        this.rootView = super.onCreateView(parent, name, context, attrs);
+        return rootView;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(this.rootView == null){
+            throw new IllegalStateException("The atached view must not be null");
+        }
+        GroupHandler.getInstance().handelList(rootView);
     }
 
     @Override
@@ -46,6 +58,7 @@ public class SessionStartActivity extends AppCompatActivity {
         Logger.log(TAG, "Moin actionNewGroup");
         Toast.makeText(SessionStartActivity.this, "implement create new Group", Toast.LENGTH_SHORT).show();
         //TODO run a Handler here and create new Group
+
     }
 
     public void actionNewGroup(MenuItem item) {
