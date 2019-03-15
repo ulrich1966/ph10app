@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+    <item
+        android:id="@+id/menu_main_entry_group"
+        android:orderInCategory="50"
+        android:title="@string/menu_group"
+        android:onClick="actionGroup"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_main_entry_player"
+        android:orderInCategory="100"
+        android:title="@string/menu_player"
+        android:onClick="actionPlayer"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_main_entry_session"
+        android:title="@string/menu_session"
+        android:orderInCategory="150"
+        android:onClick="actionSession"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_main_entry_startsession"
+        android:title="@string/menu_startsession"
+        android:orderInCategory="200"
+        android:onClick="actionSessionStart"
+        app:showAsAction="never" />
+
+</menu>
