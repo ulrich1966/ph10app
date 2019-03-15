@@ -1,18 +1,26 @@
 package de.auli.ph10zettel.handler;
 
 import android.view.View;
+import android.widget.ArrayAdapter;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import de.auli.ph10zettel.model.PlayerGroup;
+import de.auli.ph10zettel.service.GroupService;
+import de.auli.ph10zettel.util.ApiUrl;
 import de.auli.ph10zettel.util.Logger;
 
 public class GroupHandler extends Handler {
     private static final String TAG = GroupHandler.class.getSimpleName();
     private static final GroupHandler instance = new GroupHandler();
+    private GroupService service = new GroupService(ApiUrl.REMOTE_BASE);
 
     private GroupHandler() {
         super();
     }
 
-    public static GroupHandler getInstance(){
+    public static GroupHandler getInstance() {
         return GroupHandler.instance;
     }
 
@@ -23,9 +31,18 @@ public class GroupHandler extends Handler {
     }
 
     @Override
-    public void handelList(View view) {
-        Logger.log(TAG, "handelList");
+    public ArrayAdapter<PlayerGroup> handelList(View view) {
         super.setView(view);
+        Logger.log(TAG, "handelList");
+        try {
+            URL url= service.createUrl(ApiUrl.GROUPS);
+            Logger.log(TAG, url.toString());
+            service.GET(url);
+            return null;
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override

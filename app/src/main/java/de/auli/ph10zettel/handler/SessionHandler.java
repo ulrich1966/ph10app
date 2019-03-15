@@ -1,7 +1,9 @@
 package de.auli.ph10zettel.handler;
 
 import android.view.View;
+import android.widget.ArrayAdapter;
 
+import de.auli.ph10zettel.model.PlayerGroup;
 import de.auli.ph10zettel.util.Logger;
 
 public class SessionHandler extends Handler {
@@ -23,9 +25,10 @@ public class SessionHandler extends Handler {
     }
 
     @Override
-    public void handelList(View view) {
+    public ArrayAdapter<PlayerGroup> handelList(View view) {
         Logger.log(TAG, "handelList");
         super.setView(view);
+        return null;
     }
 
     @Override
