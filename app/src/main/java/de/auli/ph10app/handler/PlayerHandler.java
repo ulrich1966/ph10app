@@ -21,31 +21,26 @@ public class PlayerHandler extends Handler {
     @Override
     public void handelCreate(View view) {
         Logger.log(TAG, "handelCreate");
-        super.setView(view);
     }
 
     @Override
     public ArrayAdapter<PlayerGroup> handelList(View view) {
         Logger.log(TAG, "handelList");
-        super.setView(view);
         return null;
     }
 
     @Override
     public void handelModel(View view, Long id) {
         Logger.log(TAG, "handelModel");
-        super.setView(view);
     }
 
     @Override
     public void handelUpdate(View view) {
         Logger.log(TAG, "handelUpdate");
-        super.setView(view);
     }
 
     @Override
     public void handelDelete(View view) {
         Logger.log(TAG, "handelDelete");
-        super.setView(view);
     }
 }

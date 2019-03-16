@@ -1,17 +1,19 @@
 package de.auli.ph10app.service;
 
+import android.util.Log;
+
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.net.MalformedURLException;
+import org.json.JSONObject;
+
+import de.auli.ph10app.util.ApiUrl;
 
 public abstract class Service implements ServiceAble {
-    private static String rootUrl;
+    private static final String TAG = Service.class.getSimpleName();
+    private static final String rootUrl = ApiUrl.REMOTE_BASE;
     protected ObjectMapper mapper = new ObjectMapper();
-    private static String result;
-
-    public Service(String hostAddress) {
-        Service.rootUrl = hostAddress;
-    }
 
     public String createUrl(String url) {
         return String.format(url, Service.rootUrl);
@@ -27,13 +29,5 @@ public abstract class Service implements ServiceAble {
 
     public String createUrl(String url, String id$1, String id$2, String id$3) {
         return String.format(url, Service.rootUrl, id$1, id$2, id$3);
-    }
-
-    public static String getResult() {
-        return result;
-    }
-
-    public static void setResult(String result) {
-        Service.result = result;
     }
 }
