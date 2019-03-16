@@ -8,18 +8,14 @@ import android.util.AttributeSet;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import de.auli.ph10app.R;
-import de.auli.ph10app.service.GroupService;
-import de.auli.ph10app.util.ApiUrl;
 import de.auli.ph10app.util.Logger;
 
 public class SessionStartActivity extends AppCompatActivity {
     private static final String TAG = SessionStartActivity.class.getSimpleName();
     private View rootView;
-    private GroupService service;
 
     public SessionStartActivity() {
         super();
@@ -40,11 +36,6 @@ public class SessionStartActivity extends AppCompatActivity {
             throw new IllegalStateException("The atached view must not be null");
         }
         Logger.log(TAG, "--> view is build and you'r arrived --> onStart");
-        //GroupHandler.getInstance().handelList(rootView);
-        TextView textView = (TextView) findViewById(R.id.txt_sessionstart);
-        service = new GroupService(textView);
-        service.GET(service.createUrl(ApiUrl.GROUPS), textView);
-        //textView.setText(""+ DataAppendService.getInstance().getObject());
     }
 
 

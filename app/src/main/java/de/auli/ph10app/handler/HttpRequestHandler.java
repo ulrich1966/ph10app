@@ -1,8 +1,8 @@
-package de.auli.ph10app.service;
+package de.auli.ph10app.handler;
 
 import android.os.AsyncTask;
-import android.view.View;
-import android.widget.TextView;
+import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,15 +11,16 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import de.auli.ph10app.model.Model;
 import de.auli.ph10app.util.Logger;
 
-public class HttpRequestService extends AsyncTask {
-    private static final String TAG = HttpRequestService.class.getSimpleName();
+public class HttpRequestHandler<T extends Model> extends AsyncTask {
+    private static final String TAG = HttpRequestHandler.class.getSimpleName();
     String result = "";
-    View view;
+    ArrayAdapter<T> adapter;
 
-    public HttpRequestService(View view) {
-        this.view = view;
+    public HttpRequestHandler(ArrayAdapter<T> adapter) {
+        this.adapter = adapter;
     }
 
     @Override
@@ -58,10 +59,15 @@ public class HttpRequestService extends AsyncTask {
     }
 
     @Override
+    protected void onProgressUpdate(Object[] values) {
+        Toast.makeText(adapter.getContext(), values[0] + " von " + values[1] + " geladen", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
     protected void onPostExecute(Object result) {
         super.onPostExecute(result);
         Logger.log(TAG, "result:", result);
-        TextViewService.getInstance((TextView) view).setText(result);
+
     }
 
     private void readStream(InputStream in) {
