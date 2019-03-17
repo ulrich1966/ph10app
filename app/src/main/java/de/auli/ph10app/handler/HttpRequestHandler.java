@@ -4,22 +4,32 @@ import android.os.AsyncTask;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
 
 import de.auli.ph10app.model.Model;
+import de.auli.ph10app.model.PlayerGroup;
+import de.auli.ph10app.service.MarshallService;
 import de.auli.ph10app.util.Logger;
 
-public class HttpRequestHandler<T extends Model> extends AsyncTask {
+public class HttpRequestHandler<T> extends AsyncTask {
     private static final String TAG = HttpRequestHandler.class.getSimpleName();
-    String result = "";
+    ArrayList<T> resultList;
     ArrayAdapter<T> adapter;
+    Class<T> clazz;
+    MarshallService<T> marshallService = new MarshallService();
 
-    public HttpRequestHandler(ArrayAdapter<T> adapter) {
+    public HttpRequestHandler(ArrayAdapter<T> adapter, Class<? extends Model> clazz) {
         this.adapter = adapter;
     }
 
@@ -33,7 +43,6 @@ public class HttpRequestHandler<T extends Model> extends AsyncTask {
             URL url = new URL(url$);
             connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod(String.format("%s", requestMeth));
-            //connection.setRequestProperty("Content-Type", "application/json");
             connection.setRequestProperty("Content-Type", contentType);
             //connection.setDoOutput(true);
 
@@ -41,35 +50,19 @@ public class HttpRequestHandler<T extends Model> extends AsyncTask {
             Logger.log(TAG, "Sending '" + requestMeth + "' request to URL : " + url + " expecting: " + contentType);
             Logger.log(TAG, "Response Code : " + responseCode);
 
-            BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-            String inputLine;
-            StringBuffer response = new StringBuffer();
-
-            while ((inputLine = in.readLine()) != null) {
-                response.append(inputLine);
+            InputStream in = connection.getInputStream();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+            StringBuilder result = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                result.append(line);
             }
-            in.close();
-            result = response.toString();
+            return result.toString();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
             connection.disconnect();
         }
-        return result;
-    }
-
-    @Override
-    protected void onProgressUpdate(Object[] values) {
-        Toast.makeText(adapter.getContext(), values[0] + " von " + values[1] + " geladen", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    protected void onPostExecute(Object result) {
-        super.onPostExecute(result);
-        Logger.log(TAG, "result:", result);
-
-    }
-
-    private void readStream(InputStream in) {
+        return null;
     }
 }

@@ -1,13 +1,19 @@
 package de.auli.ph10app.handler;
 
+import android.widget.ArrayAdapter;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import de.auli.ph10app.util.ApiUrl;
 
-public abstract class Handler implements HandlerAble {
+public abstract class Handler extends HttpRequestHandler implements HandlerAble {
     private static final String TAG = Handler.class.getSimpleName();
     private static final String rootUrl = ApiUrl.REMOTE_BASE;
     protected ObjectMapper mapper = new ObjectMapper();
+
+    public Handler(ArrayAdapter adapter, Class clazz) {
+        super(adapter, clazz);
+    }
 
     public String createUrl(String url) {
         return String.format(url, Handler.rootUrl);

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/image_cards_48"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_cards_48" />
+<!--
+
+    <TextView
+        android:id="@+id/text_Info_playergroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin"
+        android:hint="Info"
+        app:layout_constraintBottom_toBottomOf="@+id/image_cards_48"
+        app:layout_constraintEnd_toStartOf="@+id/image_cards_48"
+        app:layout_constraintHorizontal_bias="0.46"
+        app:layout_constraintStart_toEndOf="@+id/textView9"
+        app:layout_constraintTop_toTopOf="@+id/image_cards_48" />
+-->
+
+    <TextView
+        android:id="@+id/txt_playergroup_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin"
+        android:hint="Gruppenname"
+        android:textSize="@dimen/big"
+        app:layout_constraintBottom_toBottomOf="@+id/image_cards_48"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/image_cards_48" />
+
+    <ImageButton
+        android:id="@+id/cmd_playergroup_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:srcCompat="@android:drawable/arrow_down_float"
+        app:layout_constraintBottom_toBottomOf="@+id/image_cards_48"
+        app:layout_constraintEnd_toStartOf="@+id/image_cards_48"
+        app:layout_constraintHorizontal_bias="0.46"
+        app:layout_constraintStart_toEndOf="@+id/txt_playergroup_name"
+        app:layout_constraintTop_toTopOf="@+id/image_cards_48" />
+
+    <ListView
+        android:id="@+id/livi_plyergoup_innerlist"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/margin"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_cards_48" />
+
+</android.support.constraint.ConstraintLayout>
