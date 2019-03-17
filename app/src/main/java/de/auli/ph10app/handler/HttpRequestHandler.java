@@ -18,7 +18,7 @@ import de.auli.ph10app.service.MarshallService;
 import de.auli.ph10app.util.AppLogger;
 
 public class HttpRequestHandler<T> extends AsyncTask {
-    private static final AppLogger LOG = AppLogger.getLogger(HttpRequestHandler.class, true);
+    private static final AppLogger LOG = new AppLogger(HttpRequestHandler.class, false);
     ArrayList<T> resultList;
     ArrayAdapter<T> adapter;
     Class<T> clazz;

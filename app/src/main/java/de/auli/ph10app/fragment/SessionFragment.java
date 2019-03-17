@@ -12,7 +12,7 @@ import de.auli.ph10app.R;
 import de.auli.ph10app.util.AppLogger;
 
 public class SessionFragment extends Fragment {
-    private static final AppLogger LOG = AppLogger.getLogger(SessionFragment.class, false);
+    private static final AppLogger LOG = new AppLogger(SessionFragment.class, false);
     public SessionFragment() {
         super();
     }

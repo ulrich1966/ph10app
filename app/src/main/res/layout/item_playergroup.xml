@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:tooltipText="@string/show_players_in_proup"
-        android:onClick="actionShowPlayers"
+        android:onClick="actionGrpShowPlayers"
         app:srcCompat="@android:drawable/arrow_down_float"
         app:layout_constraintBottom_toBottomOf="@+id/img_player"
         app:layout_constraintEnd_toStartOf="@+id/img_player"
@@ -38,13 +38,13 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin"
         android:tooltipText="@string/start_session"
-        android:onClick="actionStartSession"
+        android:onClick="actionNewPlayerInGrp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_add_person_48" />
 
     <ListView
-        android:id="@+id/livi_plyergoup_innerlist"
+        android:id="@+id/livi_playgoup_innerlist"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="@dimen/margin"

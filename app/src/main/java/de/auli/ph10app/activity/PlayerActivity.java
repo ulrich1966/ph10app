@@ -11,7 +11,7 @@ import de.auli.ph10app.R;
 import de.auli.ph10app.util.AppLogger;
 
 public class PlayerActivity extends AppCompatActivity {
-    private static final AppLogger LOG = AppLogger.getLogger(PlayerActivity.class, false);
+    private static final AppLogger LOG = new AppLogger(PlayerActivity.class, false);
     private static final String TAG = PlayerActivity.class.getSimpleName();
 
     @Override

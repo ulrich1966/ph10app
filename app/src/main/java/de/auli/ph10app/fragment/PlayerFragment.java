@@ -12,7 +12,7 @@ import de.auli.ph10app.R;
 import de.auli.ph10app.util.AppLogger;
 
 public class PlayerFragment extends Fragment {
-    private static final AppLogger LOG = AppLogger.getLogger(PlayerFragment.class, false);
+    private static final AppLogger LOG = new AppLogger(PlayerFragment.class, false);
     private static final String TAG = PlayerFragment.class.getSimpleName();
 
     public PlayerFragment() {

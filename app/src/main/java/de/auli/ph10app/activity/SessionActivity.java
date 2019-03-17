@@ -10,8 +10,7 @@ import de.auli.ph10app.R;
 import de.auli.ph10app.util.AppLogger;
 
 public class SessionActivity extends AppCompatActivity {
-    private static final AppLogger LOG = AppLogger.getLogger(SessionActivity.class, false);
-    private static final String TAG = SessionActivity.class.getSimpleName();
+    private static final AppLogger LOG = new AppLogger(SessionActivity.class, false);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -14,7 +14,7 @@ import de.auli.ph10app.activity.SessionStartActivity;
 import de.auli.ph10app.util.AppLogger;
 
 public class MainActivity extends AppCompatActivity {
-    private static final AppLogger LOG = AppLogger.getLogger(MainActivity.class, false);
+    private static final AppLogger LOG = new AppLogger(MainActivity.class, false);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

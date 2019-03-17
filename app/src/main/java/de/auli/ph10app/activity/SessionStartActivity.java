@@ -15,7 +15,7 @@ import de.auli.ph10app.R;
 import de.auli.ph10app.util.AppLogger;
 
 public class SessionStartActivity extends AppCompatActivity implements Ph10Activity {
-    private static final AppLogger LOG = AppLogger.getLogger(SessionStartActivity.class, false);
+    private static final AppLogger LOG = new AppLogger(SessionStartActivity.class, false);
     private View rootView;
     private ImageButton cmdAddGroup;
     private boolean isDebug = false;
@@ -59,20 +59,20 @@ public class SessionStartActivity extends AppCompatActivity implements Ph10Activ
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_session, menu);
+        getMenuInflater().inflate(R.menu.menu_group_session, menu);
         return true;
+    }
+
+    public void menActionNewGroup(MenuItem item) {
+        LOG.log("Moin actionNewGroup");
+        String msg = String.format("implement create new Group for click in menu: ", item.getTitle());
+        Toast.makeText(SessionStartActivity.this, msg, Toast.LENGTH_SHORT).show();
+        //TODO run a Handler here and create new Group
     }
 
     public void actionNewGroup(View view) {
         LOG.log("Moin actionNewGroup");
         String msg = String.format("implement create new Group for click in view: ", view.getId());
-        Toast.makeText(SessionStartActivity.this, msg, Toast.LENGTH_SHORT).show();
-        //TODO run a Handler here and create new Group
-    }
-
-    public void actionNewGroup(MenuItem item) {
-        LOG.log("Moin actionNewGroup");
-        String msg = String.format("implement create new Group for click in menu: ", item.getTitle());
         Toast.makeText(SessionStartActivity.this, msg, Toast.LENGTH_SHORT).show();
         //TODO run a Handler here and create new Group
     }
@@ -84,7 +84,7 @@ public class SessionStartActivity extends AppCompatActivity implements Ph10Activ
         //TODO run a Handler here and create new Session
     }
 
-    public void actionShowPlayers(View view) {
+    public void actionSessShowPlayers(View view) {
         LOG.log("Moin actionShowPlayers");
         String msg = String.format("implement create new Group for click in view: ", view.getId());
         Toast.makeText(SessionStartActivity.this, msg, Toast.LENGTH_SHORT).show();

@@ -21,13 +21,13 @@ public class StartSessionListAdapter extends ArrayAdapter<PlayerGroup> {
     // aufrufende Activity
     private Context mContext;
     // Inhaltsliste
-    private List<PlayerGroup> groups;
+    private List<PlayerGroup> playerGroups;
 
     public StartSessionListAdapter(Context context, int resource, List<PlayerGroup> items) {
         super(context, resource, items);
         this.resourceLayout = resource;
         this.mContext = context;
-        this.groups = items;
+        this.playerGroups = items;
     }
 
     /**
@@ -50,7 +50,7 @@ public class StartSessionListAdapter extends ArrayAdapter<PlayerGroup> {
             TextView txtName = itemView.findViewById(R.id.txt_playergroup_name);
             ImageButton cmdMore = itemView.findViewById(R.id.cmd_playergroup_more);
             ImageView imgIc = itemView.findViewById(R.id.img_cards);
-            ListView liviPlayer = itemView.findViewById(R.id.livi_plyergoup_innerlist);
+            ListView liviPlayer = itemView.findViewById(R.id.livi_playgoup_innerlist);
 
             if (txtName != null) {
                 txtName.setText(model.getName());

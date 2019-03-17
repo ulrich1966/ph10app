@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -15,6 +18,7 @@ import de.auli.ph10app.R;
 import de.auli.ph10app.adapter.PlayerGroupListAdapter;
 import de.auli.ph10app.handler.GroupRequestHandler;
 import de.auli.ph10app.model.PlayerGroup;
+import de.auli.ph10app.util.ApiUrl;
 
 public class GroupFragment extends Fragment {
     private PlayerGroupListAdapter listAdapter;
@@ -44,5 +48,28 @@ public class GroupFragment extends Fragment {
         return rootView;
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        handler = new GroupRequestHandler(listAdapter, PlayerGroup.class);
+        handler.GET(handler.createUrl(ApiUrl.GROUPS));
+    }
+
+    /**
+     * This happends in GroupActivity
+     */
+//    @Override
+//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+//        inflater.inflate(R.menu.menu_group, menu);
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        return super.onOptionsItemSelected(item);
+//    }
 }

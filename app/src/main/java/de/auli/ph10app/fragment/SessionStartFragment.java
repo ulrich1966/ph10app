@@ -9,7 +9,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
@@ -23,7 +22,7 @@ import de.auli.ph10app.util.ApiUrl;
 import de.auli.ph10app.util.AppLogger;
 
 public class SessionStartFragment extends Fragment {
-    private static final AppLogger LOG = AppLogger.getLogger(SessionStartFragment.class, false);
+    private static final AppLogger LOG = new AppLogger(SessionStartFragment.class, false);
     private boolean isDebug = false;
     private GroupRequestHandler handler;
     private ViewGroup container;
@@ -64,14 +63,17 @@ public class SessionStartFragment extends Fragment {
         handler.GET(handler.createUrl(ApiUrl.GROUPS));
     }
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_session, menu);
-    }
+    /**
+     * Tith happands in SessionActivity
+     */
+//    @Override
+//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+//        inflater.inflate(R.menu.menu_group_session, menu);
+//    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        return super.onOptionsItemSelected(item);
+//    }
 
 }

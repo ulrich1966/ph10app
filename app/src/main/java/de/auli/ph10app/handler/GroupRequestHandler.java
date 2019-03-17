@@ -11,7 +11,7 @@ import de.auli.ph10app.util.ApiUrl;
 import de.auli.ph10app.util.AppLogger;
 
 public class GroupRequestHandler extends Handler {
-    private static final AppLogger LOG = AppLogger.getLogger(GroupRequestHandler.class, false);
+    private static final AppLogger LOG = new AppLogger(GroupRequestHandler.class, false);
     private String modelList = ApiUrl.GROUPS;
     private String model = ApiUrl.GROUP_ID;
 
