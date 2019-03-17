@@ -18,13 +18,13 @@ import de.auli.ph10app.service.MarshallService;
 import de.auli.ph10app.util.AppLogger;
 
 public class HttpRequestHandler<T> extends AsyncTask {
-    private static final AppLogger LOG = new AppLogger(HttpRequestHandler.class, false);
+    private static final AppLogger LOG = new AppLogger(HttpRequestHandler.class, true);
     ArrayList<T> resultList;
-    ArrayAdapter<T> adapter;
+    ArrayAdapter adapter;
     Class<T> clazz;
     MarshallService<T> marshallService = new MarshallService();
 
-    public HttpRequestHandler(ArrayAdapter<T> adapter, Class<? extends Model> clazz) {
+    public HttpRequestHandler(ArrayAdapter adapter, Class<? extends Model> clazz) {
         this.adapter = adapter;
     }
 
@@ -42,7 +42,7 @@ public class HttpRequestHandler<T> extends AsyncTask {
             //connection.setDoOutput(true);
 
             int responseCode = connection.getResponseCode();
-            LOG.log("Sending '" + requestMeth + "' request to URL : " + url + " expecting: " + contentType);
+
             LOG.log("Sending request:", requestMeth);
             LOG.log("to URL:", url);
             LOG.log("expecting:", contentType);

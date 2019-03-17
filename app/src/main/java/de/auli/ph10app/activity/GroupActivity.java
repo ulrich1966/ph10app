@@ -7,9 +7,16 @@ import android.util.AttributeSet;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import de.auli.ph10app.R;
+import de.auli.ph10app.adapter.PlayerListAdapter;
+import de.auli.ph10app.handler.PlayerRequestHandler;
+import de.auli.ph10app.model.Player;
+import de.auli.ph10app.util.ApiUrl;
 import de.auli.ph10app.util.AppLogger;
 
 public class GroupActivity extends AppCompatActivity implements Ph10Activity {
@@ -53,13 +60,6 @@ public class GroupActivity extends AppCompatActivity implements Ph10Activity {
         String msg = String.format("implement create new Group for click in menu: ", item.getTitle());
         Toast.makeText(GroupActivity.this, msg, Toast.LENGTH_SHORT).show();
         //TODO run a Handler here and create new Group
-    }
-
-    public void actionGrpShowPlayers(View view) {
-        LOG.log("Moin actionGrpShowPlayers");
-        String msg = String.format("implement show players for click in view: ", view.getId());
-        Toast.makeText(GroupActivity.this, msg, Toast.LENGTH_SHORT).show();
-        //TODO run a Handler here and show players for playgroup
     }
 
     public void actionNewPlayerInGrp(View view) {

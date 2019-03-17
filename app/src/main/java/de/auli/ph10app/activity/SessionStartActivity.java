@@ -84,13 +84,6 @@ public class SessionStartActivity extends AppCompatActivity implements Ph10Activ
         //TODO run a Handler here and create new Session
     }
 
-    public void actionSessShowPlayers(View view) {
-        LOG.log("Moin actionShowPlayers");
-        String msg = String.format("implement create new Group for click in view: ", view.getId());
-        Toast.makeText(SessionStartActivity.this, msg, Toast.LENGTH_SHORT).show();
-        //TODO run a Handler here and show players for playgroup
-    }
-
     @Override
     public void setupClickListener() {
         cmdAddGroup = findViewById(R.id.cmd_add_group);

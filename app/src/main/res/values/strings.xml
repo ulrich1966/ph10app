@@ -36,4 +36,6 @@
     <string name="show_players_in_proup">Spieler dieser Gruppe anzeigen</string>
     <string name="start_session">Spielrunde starten</string>
     <string name="empty" />
+    <string name="add_player">Spieler hinzufügen</string>
+    <string name="playername">Spielername</string>
 </resources>

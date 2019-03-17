@@ -11,20 +11,29 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import de.auli.ph10app.R;
+import de.auli.ph10app.activity.GroupActivity;
 import de.auli.ph10app.adapter.PlayerGroupListAdapter;
+import de.auli.ph10app.adapter.PlayerListAdapter;
 import de.auli.ph10app.handler.GroupRequestHandler;
+import de.auli.ph10app.handler.PlayerRequestHandler;
+import de.auli.ph10app.model.Player;
 import de.auli.ph10app.model.PlayerGroup;
 import de.auli.ph10app.util.ApiUrl;
+import de.auli.ph10app.util.AppLogger;
 
 public class GroupFragment extends Fragment {
+    private static final AppLogger LOG = new AppLogger(GroupFragment.class, false);
     private PlayerGroupListAdapter listAdapter;
     private GroupRequestHandler handler;
     private ViewGroup container;
     private ImageButton cmdAddGroup;
+    private ImageButton cmdMore;
 
     public GroupFragment() {
         // Required empty public constructor
@@ -60,16 +69,17 @@ public class GroupFragment extends Fragment {
         handler.GET(handler.createUrl(ApiUrl.GROUPS));
     }
 
-    /**
-     * This happends in GroupActivity
-     */
-//    @Override
-//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-//        inflater.inflate(R.menu.menu_group, menu);
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        return super.onOptionsItemSelected(item);
-//    }
+    public void actionShowMore(View view) {
+        LOG.log("Moin actionNewGroup");
+        PlayerListAdapter listAdapter = new PlayerListAdapter(view.getContext(), R.layout.item_playergroup, new ArrayList<Player>());
+        PlayerRequestHandler handler = new PlayerRequestHandler(listAdapter, Player.class);
+        Long id = null;
+        try {
+            id = Long.valueOf(((TextView) view.findViewById(R.id.txt_id)).getText().toString());
+            LOG.log("ID:", id);
+            handler.GET(handler.createUrl(ApiUrl.PLAYER_IN_GROUP, id));
+        } catch (NumberFormatException e) {
+            LOG.error(e.getMessage(), e);
+        }
+    }
 }

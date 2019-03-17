@@ -7,5 +7,6 @@ public class ApiUrl {
 	public static final String GROUP_ID = GROUPS+"/%s";
 	public static final String PLAYER = "%s/player";
 	public static final String PLAYER_ID = PLAYER+"/%s";
+	public static final String PLAYER_IN_GROUP = PLAYER+"/playergroup/%s";
 	public static final String GROUP_ADD_PLAYER = "%s/playergroup/%s/player/%s";
 }

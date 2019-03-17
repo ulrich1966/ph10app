@@ -1,6 +1,7 @@
 package de.auli.ph10app.adapter;
 
 import android.content.Context;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,21 +14,23 @@ import android.widget.TextView;
 import java.util.List;
 
 import de.auli.ph10app.R;
+import de.auli.ph10app.handler.PlayerRequestHandler;
+import de.auli.ph10app.model.Player;
 import de.auli.ph10app.model.PlayerGroup;
 
-public class StartSessionListAdapter extends ArrayAdapter<PlayerGroup> {
+public class PlayerListAdapter extends ArrayAdapter<Player> {
     // rootView --> fragment_sessionstart
     private int resourceLayout;
     // aufrufende Activity
-    private Context context;
+    private Context mContext;
     // Inhaltsliste
-    private List<PlayerGroup> playerGroups;
+    private List<Player> player;
 
-    public StartSessionListAdapter(Context context, int resource, List<PlayerGroup> items) {
+    public PlayerListAdapter(Context context, int resource, List<Player> items) {
         super(context, resource, items);
         this.resourceLayout = resource;
-        this.context = context;
-        this.playerGroups = items;
+        this.mContext = context;
+        this.player = items;
     }
 
     /**
@@ -42,23 +45,24 @@ public class StartSessionListAdapter extends ArrayAdapter<PlayerGroup> {
         View itemView = convertView;
 
         if(itemView == null)
-            itemView = LayoutInflater.from(context).inflate(R.layout.item_session_playergroup, parent,false);
+            itemView = LayoutInflater.from(mContext).inflate(R.layout.item_player, parent,false);
 
-        PlayerGroup model = getItem(position);
+        Player model = getItem(position);
 
         if (model != null) {
-            TextView txtName = itemView.findViewById(R.id.txt_playergroup_name);
-            ImageButton cmdMore = itemView.findViewById(R.id.cmd_playergroup_more);
-            ImageView imgIc = itemView.findViewById(R.id.cmd_start_session);
-            ListView liviPlayer = itemView.findViewById(R.id.livi_playgoup_innerlist);
+            TextView txtName = itemView.findViewById(R.id.txt_player_name);
+            ImageView imgAvatar = itemView.findViewById(R.id.img_avatar);
 
             if (txtName != null) {
                 txtName.setText(model.getName());
+            }
+
+            if (imgAvatar != null) {
+                // here goes setting for playeravatar
             }
 
         }
 
         return itemView;
     }
-
 }

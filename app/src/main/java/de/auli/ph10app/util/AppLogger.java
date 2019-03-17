@@ -4,8 +4,8 @@ import android.util.Log;
 
 public class AppLogger {
     public static AppLogger ourInstance;
-    static String className;
-    static Boolean isLog;
+    private String className;
+    private Boolean isLog;
 
     /**
      * Set true for logging debug  - false for advoid logging in debug
@@ -19,7 +19,7 @@ public class AppLogger {
         this.isLog = isLog;
     }
 
-    private static void out(String msg) {
+    private void out(String msg) {
         if (msg == null) msg = new String("");
         if (isLog) {
             System.out.println("***********************");
@@ -46,5 +46,14 @@ public class AppLogger {
 
     public void log(String msg, Object param$1, Object param$2) {
         out(String.format("%s %s %s", msg, param$1, param$2));
+    }
+
+
+    private boolean getIsLog() {
+        return isLog;
+    }
+
+    public void error(String msg, Exception e) {
+        Log.e(className, msg, e);
     }
 }

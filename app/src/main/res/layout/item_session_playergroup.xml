@@ -14,9 +14,9 @@
         android:layout_margin="@dimen/margin"
         android:hint="@string/groupname"
         android:textSize="@dimen/big"
-        app:layout_constraintBottom_toBottomOf="@+id/img_cards"
+        app:layout_constraintBottom_toBottomOf="@+id/cmd_start_session"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/img_cards" />
+        app:layout_constraintTop_toTopOf="@+id/cmd_start_session" />
 
     <ImageButton
         android:id="@+id/cmd_playergroup_more"
@@ -24,20 +24,19 @@
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:tooltipText="@string/show_players_in_proup"
-        android:onClick="actionSessShowPlayers"
         app:srcCompat="@android:drawable/arrow_down_float"
-        app:layout_constraintBottom_toBottomOf="@+id/img_cards"
-        app:layout_constraintEnd_toStartOf="@+id/img_cards"
-        app:layout_constraintHorizontal_bias="0.46"
+        app:layout_constraintBottom_toBottomOf="@+id/cmd_start_session"
+        app:layout_constraintEnd_toStartOf="@+id/cmd_start_session"
         app:layout_constraintStart_toEndOf="@+id/txt_playergroup_name"
-        app:layout_constraintTop_toTopOf="@+id/img_cards" />
+        app:layout_constraintTop_toTopOf="@+id/cmd_start_session" />
 
-    <ImageView
-        android:id="@+id/img_cards"
+    <ImageButton
+        android:id="@+id/cmd_start_session"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin"
         android:tooltipText="@string/start_session"
+        android:background="@android:color/transparent"
         android:onClick="actionStartSession"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -52,6 +51,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_cards" />
+        app:layout_constraintTop_toBottomOf="@+id/cmd_start_session" />
 
 </android.support.constraint.ConstraintLayout>
