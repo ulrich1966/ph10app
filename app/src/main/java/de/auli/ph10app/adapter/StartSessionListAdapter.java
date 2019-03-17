@@ -15,7 +15,7 @@ import java.util.List;
 import de.auli.ph10app.R;
 import de.auli.ph10app.model.PlayerGroup;
 
-public class GroupListAdapter extends ArrayAdapter<PlayerGroup> {
+public class StartSessionListAdapter extends ArrayAdapter<PlayerGroup> {
     // rootView --> fragment_sessionstart
     private int resourceLayout;
     // aufrufende Activity
@@ -23,7 +23,7 @@ public class GroupListAdapter extends ArrayAdapter<PlayerGroup> {
     // Inhaltsliste
     private List<PlayerGroup> groups;
 
-    public GroupListAdapter(Context context, int resource, List<PlayerGroup> items) {
+    public StartSessionListAdapter(Context context, int resource, List<PlayerGroup> items) {
         super(context, resource, items);
         this.resourceLayout = resource;
         this.mContext = context;
@@ -42,14 +42,14 @@ public class GroupListAdapter extends ArrayAdapter<PlayerGroup> {
         View itemView = convertView;
 
         if(itemView == null)
-            itemView = LayoutInflater.from(mContext).inflate(R.layout.item_list_group, parent,false);
+            itemView = LayoutInflater.from(mContext).inflate(R.layout.item_session_playergroup, parent,false);
 
         PlayerGroup model = getItem(position);
 
         if (model != null) {
             TextView txtName = itemView.findViewById(R.id.txt_playergroup_name);
             ImageButton cmdMore = itemView.findViewById(R.id.cmd_playergroup_more);
-            ImageView imgIc = itemView.findViewById(R.id.image_cards_48);
+            ImageView imgIc = itemView.findViewById(R.id.img_cards);
             ListView liviPlayer = itemView.findViewById(R.id.livi_plyergoup_innerlist);
 
             if (txtName != null) {

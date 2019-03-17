@@ -9,11 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import de.auli.ph10app.R;
-import de.auli.ph10app.util.Logger;
+import de.auli.ph10app.util.AppLogger;
 
 public class SessionFragment extends Fragment {
-    private static final String TAG = SessionFragment.class.getSimpleName();
-
+    private static final AppLogger LOG = AppLogger.getLogger(SessionFragment.class, false);
     public SessionFragment() {
         super();
     }
@@ -21,7 +20,7 @@ public class SessionFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        Logger.log(TAG, "yuo'r arrived --> onCreateView");
+        LOG.log("you'r arrived --> onCreateView");
         return inflater.inflate(R.layout.fragment_session, container, false);
     }
 }

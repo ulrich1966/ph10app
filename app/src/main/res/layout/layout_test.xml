@@ -3,13 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frgm_layout_session"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="de.auli.ph10app.fragment.SessionStartFragment">
+    android:layout_height="match_parent">
 
-    <ImageButton
-        android:id="@+id/cmd_add_group"
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin"
@@ -18,15 +16,4 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_add_group_48" />
-
-    <ListView
-        android:id="@+id/livi_startsession_groups"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_margin="@dimen/no_margin"
-        android:background="@android:color/transparent"
-        app:layout_constraintBottom_toTopOf="@+id/cmd_add_group"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

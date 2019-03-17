@@ -8,16 +8,17 @@ import android.view.View;
 import android.widget.Toast;
 
 import de.auli.ph10app.R;
-import de.auli.ph10app.util.Logger;
+import de.auli.ph10app.util.AppLogger;
 
 public class PlayerActivity extends AppCompatActivity {
+    private static final AppLogger LOG = AppLogger.getLogger(PlayerActivity.class, false);
     private static final String TAG = PlayerActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player);
-        Logger.log(TAG, "your'r arrived --> onCreate");
+        LOG.log("your'r arrived --> onCreate");
     }
 
     @Override
@@ -26,7 +27,7 @@ public class PlayerActivity extends AppCompatActivity {
     }
 
     public void actionNewPlayer(View view) {
-        Logger.log(TAG, "Moin actionNewGroup");
+        LOG.log("Moin actionNewGroup");
         Toast.makeText(PlayerActivity.this, "implement create new Player", Toast.LENGTH_SHORT).show();
         //TODO run a Handler here and create new Player
     }

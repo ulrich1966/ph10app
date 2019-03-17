@@ -8,14 +8,17 @@ import android.util.AttributeSet;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import de.auli.ph10app.R;
-import de.auli.ph10app.util.Logger;
+import de.auli.ph10app.util.AppLogger;
 
-public class SessionStartActivity extends AppCompatActivity {
-    private static final String TAG = SessionStartActivity.class.getSimpleName();
+public class SessionStartActivity extends AppCompatActivity implements Ph10Activity {
+    private static final AppLogger LOG = AppLogger.getLogger(SessionStartActivity.class, false);
     private View rootView;
+    private ImageButton cmdAddGroup;
+    private boolean isDebug = false;
 
     public SessionStartActivity() {
         super();
@@ -24,9 +27,9 @@ public class SessionStartActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Logger.log(TAG, "--> onCreate");
+        LOG.log("you'r arrived --> onCreate");
         setContentView(R.layout.activity_sessionstart);
-        //GroupHandler.getInstance().handelList(null);
+        setupClickListener();
     }
 
     @Override
@@ -35,9 +38,8 @@ public class SessionStartActivity extends AppCompatActivity {
         if (this.rootView == null) {
             throw new IllegalStateException("The atached view must not be null");
         }
-        Logger.log(TAG, "--> view is build and you'r arrived --> onStart");
+        LOG.log("--> view is build and you'r arrived --> onStart");
     }
-
 
     @Override
     protected void onPause() {
@@ -45,7 +47,6 @@ public class SessionStartActivity extends AppCompatActivity {
     }
 
     @Override
-
     public View onCreateView(View parent, String name, Context context, AttributeSet attrs) {
         this.rootView = super.onCreateView(parent, name, context, attrs);
         return rootView;
@@ -63,15 +64,40 @@ public class SessionStartActivity extends AppCompatActivity {
     }
 
     public void actionNewGroup(View view) {
-        Logger.log(TAG, "Moin actionNewGroup");
-        Toast.makeText(SessionStartActivity.this, "implement create new Group", Toast.LENGTH_SHORT).show();
+        LOG.log("Moin actionNewGroup");
+        String msg = String.format("implement create new Group for click in view: ", view.getId());
+        Toast.makeText(SessionStartActivity.this, msg, Toast.LENGTH_SHORT).show();
         //TODO run a Handler here and create new Group
-
     }
 
     public void actionNewGroup(MenuItem item) {
-        Logger.log(TAG, "Moin actionNewGroup");
-        Toast.makeText(SessionStartActivity.this, "Item click: " + item.getTitle(), Toast.LENGTH_SHORT).show();
+        LOG.log("Moin actionNewGroup");
+        String msg = String.format("implement create new Group for click in menu: ", item.getTitle());
+        Toast.makeText(SessionStartActivity.this, msg, Toast.LENGTH_SHORT).show();
         //TODO run a Handler here and create new Group
+    }
+
+    public void actionStartSession(View view) {
+        LOG.log("Moin actionStartSession");
+        String msg = String.format("implement create new Group for click in view: ", view.getId());
+        Toast.makeText(SessionStartActivity.this, msg, Toast.LENGTH_SHORT).show();
+        //TODO run a Handler here and create new Session
+    }
+
+    public void actionShowPlayers(View view) {
+        LOG.log("Moin actionShowPlayers");
+        String msg = String.format("implement create new Group for click in view: ", view.getId());
+        Toast.makeText(SessionStartActivity.this, msg, Toast.LENGTH_SHORT).show();
+        //TODO run a Handler here and show players for playgroup
+    }
+
+    @Override
+    public void setupClickListener() {
+        cmdAddGroup = findViewById(R.id.cmd_add_group);
+        cmdAddGroup.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                actionNewGroup(view);
+            }
+        });
     }
 }

@@ -32,4 +32,8 @@
     <string name="head_sessionstart">Für welche Gruppe möchtest Du eine Spielrunde starten?</string>
 
     <string name="loremipsum">Lorem Ipsum</string>
+    <string name="groupname">Spielergruppe</string>
+    <string name="show_players_in_proup">Spieler dieser Gruppe anzeigen</string>
+    <string name="start_session">Spielrunde starten</string>
+    <string name="empty" />
 </resources>

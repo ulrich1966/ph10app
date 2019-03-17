@@ -1,11 +1,8 @@
 package de.auli.ph10app.handler;
 
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.ArrayAdapter;
-import android.widget.Toast;
-
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,16 +11,14 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
+import java.util.logging.Logger;
 
 import de.auli.ph10app.model.Model;
-import de.auli.ph10app.model.PlayerGroup;
 import de.auli.ph10app.service.MarshallService;
-import de.auli.ph10app.util.Logger;
+import de.auli.ph10app.util.AppLogger;
 
 public class HttpRequestHandler<T> extends AsyncTask {
-    private static final String TAG = HttpRequestHandler.class.getSimpleName();
+    private static final AppLogger LOG = AppLogger.getLogger(HttpRequestHandler.class, true);
     ArrayList<T> resultList;
     ArrayAdapter<T> adapter;
     Class<T> clazz;
@@ -47,8 +42,11 @@ public class HttpRequestHandler<T> extends AsyncTask {
             //connection.setDoOutput(true);
 
             int responseCode = connection.getResponseCode();
-            Logger.log(TAG, "Sending '" + requestMeth + "' request to URL : " + url + " expecting: " + contentType);
-            Logger.log(TAG, "Response Code : " + responseCode);
+            LOG.log("Sending '" + requestMeth + "' request to URL : " + url + " expecting: " + contentType);
+            LOG.log("Sending request:", requestMeth);
+            LOG.log("to URL:", url);
+            LOG.log("expecting:", contentType);
+            LOG.log("Response Code : ", responseCode);
 
             InputStream in = connection.getInputStream();
             BufferedReader reader = new BufferedReader(new InputStreamReader(in));

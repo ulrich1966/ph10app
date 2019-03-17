@@ -9,9 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import de.auli.ph10app.R;
-import de.auli.ph10app.util.Logger;
+import de.auli.ph10app.util.AppLogger;
 
 public class PlayerFragment extends Fragment {
+    private static final AppLogger LOG = AppLogger.getLogger(PlayerFragment.class, false);
     private static final String TAG = PlayerFragment.class.getSimpleName();
 
     public PlayerFragment() {
@@ -21,7 +22,7 @@ public class PlayerFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        Logger.log(TAG, "you'r arrived --> onCreateView");
+        LOG.log("you'r arrived --> onCreateView");
         return inflater.inflate(R.layout.fragment_player, container, false);
     }
 }
