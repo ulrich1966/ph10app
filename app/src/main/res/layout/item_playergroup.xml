@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/session_listitem_playergroup"
+    android:id="@+id/listitem_playergroup"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -16,20 +16,6 @@
         android:textSize="@dimen/big"
         app:layout_constraintBottom_toBottomOf="@+id/cmd_add_player"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/cmd_add_player" />
-
-    <ImageButton
-        android:id="@+id/cmd_playergroup_more"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:tooltipText="@string/show_players_in_proup"
-        android:clickable="true"
-        app:srcCompat="@android:drawable/arrow_down_float"
-        app:layout_constraintBottom_toBottomOf="@+id/cmd_add_player"
-        app:layout_constraintEnd_toStartOf="@+id/cmd_add_player"
-        app:layout_constraintHorizontal_bias="0.46"
-        app:layout_constraintStart_toEndOf="@+id/txt_playergroup_name"
         app:layout_constraintTop_toTopOf="@+id/cmd_add_player" />
 
     <ImageButton
@@ -48,19 +34,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
         android:text="0"
         app:layout_constraintBottom_toBottomOf="@+id/cmd_add_player"
-        app:layout_constraintEnd_toStartOf="@+id/cmd_playergroup_more"
         app:layout_constraintStart_toEndOf="@+id/txt_playergroup_name"
         app:layout_constraintTop_toTopOf="@+id/cmd_add_player" />
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/pager_player"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cmd_add_player" />
-
+    <TextView
+        android:id="@+id/cmd_players_show"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/no_margin"
+        android:layout_marginTop="@dimen/margin"
+        android:text="@string/players_show_for_groups"
+        android:textColor="@color/colorBlue"
+        android:autoLink="all"
+        app:layout_constraintStart_toStartOf="@+id/txt_playergroup_name"
+        app:layout_constraintTop_toBottomOf="@+id/txt_playergroup_name" />
 </android.support.constraint.ConstraintLayout>

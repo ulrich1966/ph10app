@@ -48,9 +48,8 @@ public class StartSessionListAdapter extends ArrayAdapter<PlayerGroup> {
 
         if (model != null) {
             TextView txtName = itemView.findViewById(R.id.txt_playergroup_name);
-            ImageButton cmdMore = itemView.findViewById(R.id.cmd_playergroup_more);
+            ImageButton cmdMore = itemView.findViewById(R.id.cmd_players_show);
             ImageView imgIc = itemView.findViewById(R.id.cmd_start_session);
-            ListView liviPlayer = itemView.findViewById(R.id.livi_playgoup_innerlist);
 
             if (txtName != null) {
                 txtName.setText(model.getName());

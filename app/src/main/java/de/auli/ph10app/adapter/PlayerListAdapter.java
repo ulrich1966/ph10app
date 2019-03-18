@@ -53,16 +53,11 @@ public class PlayerListAdapter extends ArrayAdapter<Player> {
         LOG.log("getView ID", model.getId());
 
         if (model != null) {
-            TextView txtName = itemView.findViewById(R.id.txt_player_name);
-            //ImageView imgAvatar = itemView.findViewById(R.id.img_avatar);
-
-            if (txtName != null) {
-                txtName.setText(model.getName());
-            }
-
-
+            final TextView txtName = itemView.findViewById(R.id.txt_player_name);
+            final ImageView imgAvatar = itemView.findViewById(R.id.img_avatar);
+            txtName.setText(model.getName());
+            //imgAvatar.setImageDrawable(null);
         }
-
         return itemView;
     }
 

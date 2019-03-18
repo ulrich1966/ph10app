@@ -15,44 +15,47 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name="de.auli.ph10app.MainActivity"
+            android:name=".MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name="de.auli.ph10app.activity.SessionStartActivity"
+            android:name=".activity.SessionStartActivity"
             android:label="@string/lbl_sessionstart"
-            android:parentActivityName="de.auli.ph10app.MainActivity"
+            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.auli.ph10app.MainActivity" />
         </activity>
         <activity
-            android:name="de.auli.ph10app.activity.GroupActivity"
+            android:name=".activity.GroupActivity"
             android:label="@string/lbl_group"
-            android:parentActivityName="de.auli.ph10app.MainActivity"
+            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.auli.ph10app.MainActivity" />
         </activity>
-        <activity android:name="de.auli.ph10app.activity.PlayerActivity"
+        <activity
+            android:name=".activity.PlayerActivity"
             android:label="@string/lbl_group"
-            android:parentActivityName="de.auli.ph10app.MainActivity"
+            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.auli.ph10app.MainActivity" />
         </activity>
-        <activity android:name="de.auli.ph10app.activity.SessionActivity"
-            tools:ignore="ExtraText"
+        <activity
+            android:name=".activity.SessionActivity"
             android:label="@string/lbl_session"
-            android:parentActivityName="de.auli.ph10app.MainActivity"
-            android:screenOrientation="portrait">
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="ExtraText">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.auli.ph10app.MainActivity" />

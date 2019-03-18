@@ -12,7 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin"
-        android:hint="@string/playername"
+        android:hint="@string/player_name"
         android:textSize="@dimen/big"
         app:layout_constraintBottom_toBottomOf="@+id/img_avatar"
         app:layout_constraintEnd_toStartOf="@+id/img_avatar"

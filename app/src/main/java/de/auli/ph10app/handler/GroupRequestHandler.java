@@ -71,9 +71,12 @@ public class GroupRequestHandler extends Handler {
                 List<PlayerGroup> list = marshallService.marshall(result, PlayerGroup.class);
                 for (PlayerGroup model : list) {
                     LOG.log(model);
+                    // If you like to add Player instantly to their gropps uncommand this
+                    /*
                     PlayerListAdapter listAdapter = new PlayerListAdapter(adapter.getContext(), R.layout.item_playergroup, new ArrayList<Player>());
                     PlayerRequestHandler handler = new PlayerRequestHandler(listAdapter, Player.class);
                     handler.GET(handler.createUrl(ApiUrl.PLAYER_IN_GROUP, model.getId()));
+                     */
                     adapter.add(model);
                 }
             } catch (IOException e) {
