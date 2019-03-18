@@ -74,7 +74,8 @@ public class PlayerGroupListAdapter extends ArrayAdapter<PlayerGroup> {
             LOG.log("getView ID", currentModel.getId());
             txtId.setText(String.format("%s", currentModel.getId()));
 
-            PlayerListAdapter listAdapter = new PlayerListAdapter(context, R.layout.item_playergroup, new ArrayList<Player>());
+            //LayoutInflater.from(context).inflate(R.layout.item_playergroup, parent, false);
+            PlayerListAdapter listAdapter = new PlayerListAdapter(context, R.layout.item_player_name, new ArrayList<Player>());
             PlayerRequestHandler handler = new PlayerRequestHandler(listAdapter, Player.class);
             handler.GET(handler.createUrl(ApiUrl.PLAYER_IN_GROUP, currentModel.getId()));
 
@@ -106,22 +107,4 @@ public class PlayerGroupListAdapter extends ArrayAdapter<PlayerGroup> {
         super.add(object);
         LOG.log("add ID", object.getId());
     }
-
-
-
-
-/*
-
-        PlayerListAdapter listAdapter = new PlayerListAdapter(view.getContext(), R.layout.item_playergroup, new ArrayList<Player>());
-        PlayerRequestHandler handler = new PlayerRequestHandler(listAdapter, Player.class);
-        Long id = null;
-        try {
-            id = Long.valueOf(((TextView) view.findViewById(R.id.txt_id)).getText().toString());
-            LOG.log("ID:", id);
-            handler.GET(handler.createUrl(ApiUrl.PLAYER_IN_GROUP, id));
-        } catch (NumberFormatException e) {
-            LOG.error(e.getMessage(), e);
-        }
- */
-
 }

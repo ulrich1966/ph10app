@@ -17,8 +17,10 @@ import de.auli.ph10app.R;
 import de.auli.ph10app.handler.PlayerRequestHandler;
 import de.auli.ph10app.model.Player;
 import de.auli.ph10app.model.PlayerGroup;
+import de.auli.ph10app.util.AppLogger;
 
 public class PlayerListAdapter extends ArrayAdapter<Player> {
+    private static final AppLogger LOG = new AppLogger(PlayerListAdapter.class, true);
     // rootView --> fragment_sessionstart
     private int resourceLayout;
     // aufrufende Activity
@@ -48,21 +50,25 @@ public class PlayerListAdapter extends ArrayAdapter<Player> {
             itemView = LayoutInflater.from(mContext).inflate(R.layout.item_player, parent,false);
 
         Player model = getItem(position);
+        LOG.log("getView ID", model.getId());
 
         if (model != null) {
             TextView txtName = itemView.findViewById(R.id.txt_player_name);
-            ImageView imgAvatar = itemView.findViewById(R.id.img_avatar);
+            //ImageView imgAvatar = itemView.findViewById(R.id.img_avatar);
 
             if (txtName != null) {
                 txtName.setText(model.getName());
             }
 
-            if (imgAvatar != null) {
-                // here goes setting for playeravatar
-            }
 
         }
 
         return itemView;
+    }
+
+    @Override
+    public void add(Player object) {
+        super.add(object);
+        LOG.log("add ID", object.getId());
     }
 }

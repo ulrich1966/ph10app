@@ -55,13 +55,10 @@
         app:layout_constraintStart_toEndOf="@+id/txt_playergroup_name"
         app:layout_constraintTop_toTopOf="@+id/cmd_add_player" />
 
-    <TextView
-        android:id="@+id/txt_player"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager_player"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/no_margin"
-        android:padding="5dp"
-        android:hint="Spieler"
+        android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cmd_add_player" />
