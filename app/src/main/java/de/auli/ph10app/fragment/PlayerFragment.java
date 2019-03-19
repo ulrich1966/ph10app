@@ -1,32 +1,25 @@
 package de.auli.ph10app.fragment;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.Toast;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import de.auli.ph10app.R;
-import de.auli.ph10app.adapter.PlayerGroupListAdapter;
 import de.auli.ph10app.adapter.PlayerListAdapter;
-import de.auli.ph10app.handler.GroupRequestHandler;
 import de.auli.ph10app.handler.PlayerRequestHandler;
 import de.auli.ph10app.model.Player;
 import de.auli.ph10app.model.PlayerGroup;
 import de.auli.ph10app.util.ApiUrl;
 import de.auli.ph10app.util.AppLogger;
 
-import static android.content.Context.MODE_PRIVATE;
-import static de.auli.ph10app.util.AppSettings.PREFS_NAME;
-
-public class PlayerFragment extends Fragment {
+public class PlayerFragment extends Ph10Fragment<Player> {
     private static final AppLogger LOG = new AppLogger(PlayerFragment.class, true);
     private ViewGroup container;
     private PlayerListAdapter listAdapter;
@@ -48,9 +41,19 @@ public class PlayerFragment extends Fragment {
         // we need the listView witch will receive the data and witch should resist in the fragment_view we just made to the rootView
         ListView listView = (ListView) rootView.findViewById(R.id.livi_player);
         // At least have to instantiate the ArrayAdapter
-        listAdapter = new PlayerListAdapter(getActivity(), R.layout.fragment_player, new ArrayList<Player>());
+        listAdapter = new PlayerListAdapter(getActivity(), R.layout.fragment_player, new ArrayList<>());
         // return the just created  rootView
         listView.setAdapter(listAdapter);
+
+        Bundle bundle = getArguments();
+        if(bundle != null){
+            try {
+                Player model = (Player) getMarshallService().marshall(bundle.getString("player"), Player.class);
+                setModel(model);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         return rootView;
     }
 
@@ -63,7 +66,12 @@ public class PlayerFragment extends Fragment {
     public void onStart() {
         LOG.log("start getting data in -->   onCreateView");
         super.onStart();
-        Long currentId = null;
+        //Long currentId = null;
+
+        Player player = (Player) getModel();
+        LOG.log(player.toString());
+
+        /*
 
         // You have not an Id ... bad on you  ...
         if (currentId == null) {
@@ -85,6 +93,7 @@ public class PlayerFragment extends Fragment {
                 handler.GET(handler.createUrl(ApiUrl.PLAYER_IN_GROUP, currentId));
             }
         }
+         */
     }
 
     public void setPerson(Player person){

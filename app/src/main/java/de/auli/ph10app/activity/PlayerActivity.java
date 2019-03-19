@@ -1,21 +1,25 @@
 package de.auli.ph10app.activity;
 
 import android.content.Context;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Toast;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import de.auli.ph10app.R;
 import de.auli.ph10app.fragment.PlayerFragment;
+import de.auli.ph10app.model.Player;
+import de.auli.ph10app.service.MarshallService;
 import de.auli.ph10app.util.AppLogger;
 
 public class PlayerActivity extends Ph10Activity {
     private static final AppLogger LOG = new AppLogger(PlayerActivity.class, false);
     private View rootView;
-    private Fragment playerFragment = new PlayerFragment();
+
+    private PlayerFragment playerFragment = new PlayerFragment();
 
     // Activity needs defaultconstructor
     public PlayerActivity() {
@@ -37,6 +41,15 @@ public class PlayerActivity extends Ph10Activity {
         setupClickListener();
 
         if(savedInstanceState == null){
+            String playerAsJson = null;
+            try {
+                playerAsJson = getMarshallService().unmarshall(new Player("Hein Mück", "Moin", null));
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            };
+
+            Bundle bundle = new Bundle();
+            bundle.putString("player", playerAsJson);
             getSupportFragmentManager().beginTransaction().add(R.id.fragment_player, playerFragment).commit();
         } else {
             Long value = savedInstanceState.getLong("groupId");
