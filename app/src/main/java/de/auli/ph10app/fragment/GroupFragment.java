@@ -46,9 +46,9 @@ public class GroupFragment extends Fragment {
         //Logger.log(TAG, "you'r arrived --> onCreateView");
         this.container = container;
         View rootView = inflater.inflate(R.layout.fragment_group, container, false);
-        ListView groupListView = (ListView) rootView.findViewById(R.id.livi_groups);
+        ListView listView = (ListView) rootView.findViewById(R.id.livi_groups);
         listAdapter = new PlayerGroupListAdapter(getActivity(), R.layout.fragment_group, new ArrayList<PlayerGroup>());
-        groupListView.setAdapter(listAdapter);
+        listView.setAdapter(listAdapter);
         return rootView;
     }
 

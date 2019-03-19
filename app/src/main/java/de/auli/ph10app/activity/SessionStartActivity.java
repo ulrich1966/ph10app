@@ -14,7 +14,7 @@ import android.widget.Toast;
 import de.auli.ph10app.R;
 import de.auli.ph10app.util.AppLogger;
 
-public class SessionStartActivity extends AppCompatActivity implements Ph10Activity {
+public class SessionStartActivity extends Ph10Activity {
     private static final AppLogger LOG = new AppLogger(SessionStartActivity.class, false);
     private View rootView;
     private ImageButton cmdAddGroup;

@@ -9,7 +9,7 @@ import android.view.View;
 import de.auli.ph10app.R;
 import de.auli.ph10app.util.AppLogger;
 
-public class SessionActivity extends AppCompatActivity {
+public class SessionActivity extends Ph10Activity {
     private static final AppLogger LOG = new AppLogger(SessionActivity.class, false);
 
     @Override
@@ -24,4 +24,8 @@ public class SessionActivity extends AppCompatActivity {
         return super.onCreateView(parent, name, context, attrs);
     }
 
+    @Override
+    public void setupClickListener() {
+
+    }
 }

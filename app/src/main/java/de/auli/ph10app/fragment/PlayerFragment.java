@@ -14,6 +14,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import de.auli.ph10app.R;
+import de.auli.ph10app.adapter.PlayerGroupListAdapter;
 import de.auli.ph10app.adapter.PlayerListAdapter;
 import de.auli.ph10app.handler.GroupRequestHandler;
 import de.auli.ph10app.handler.PlayerRequestHandler;
@@ -30,6 +31,7 @@ public class PlayerFragment extends Fragment {
     private ViewGroup container;
     private PlayerListAdapter listAdapter;
     private PlayerRequestHandler handler;
+    private Player person;
 
     public PlayerFragment() {
         // Activity needs defaultconstructor
@@ -44,10 +46,11 @@ public class PlayerFragment extends Fragment {
         // find the view with listview in it and maby other elements (mostly the fragment_view)
         final View rootView = inflater.inflate(R.layout.fragment_player, container, false);
         // we need the listView witch will receive the data and witch should resist in the fragment_view we just made to the rootView
-        ListView playerListView = (ListView) rootView.findViewById(R.id.livi_player);
+        ListView listView = (ListView) rootView.findViewById(R.id.livi_player);
         // At least have to instantiate the ArrayAdapter
         listAdapter = new PlayerListAdapter(getActivity(), R.layout.fragment_player, new ArrayList<Player>());
         // return the just created  rootView
+        listView.setAdapter(listAdapter);
         return rootView;
     }
 
@@ -60,8 +63,15 @@ public class PlayerFragment extends Fragment {
     public void onStart() {
         LOG.log("start getting data in -->   onCreateView");
         super.onStart();
-        //Long currentId = getActivity().getIntent().getExtras().getLong("currentId");
-        Long currentId = 0l;
+        Long currentId = null;
+
+        // You have not an Id ... bad on you  ...
+        if (currentId == null) {
+            //currentId = 0l;
+            return;
+        }
+
+        LOG.log(currentId);
 
         if (currentId != null) {
             handler = new PlayerRequestHandler(listAdapter, PlayerGroup.class);
@@ -75,6 +85,10 @@ public class PlayerFragment extends Fragment {
                 handler.GET(handler.createUrl(ApiUrl.PLAYER_IN_GROUP, currentId));
             }
         }
+    }
+
+    public void setPerson(Player person){
+        this.person = person;
     }
 
 }

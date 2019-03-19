@@ -23,7 +23,6 @@ public class PlayerListAdapter extends ArrayAdapter<Player> {
     private final Context context;
     // Inhaltsliste
     private final  List<Player> player;
-    private View itemView;
 
     public PlayerListAdapter(Context context, int resource, List<Player> items) {
         super(context, resource, items);
@@ -40,17 +39,19 @@ public class PlayerListAdapter extends ArrayAdapter<Player> {
      * Die fertige View fuer die Eintraege zurueckgeben
      */
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        this.itemView = convertView;
+    public View getView(int position, final View rootView, ViewGroup parent) {
+        //this.itemView = null; // just for debug
+        ///this.itemView = LayoutInflater.from(itemView).inflate(R.layout.item_playergroup, parent, false);
+        final View itemView = LayoutInflater.from(context).inflate(R.layout.item_player, null, false);
 
-        if (this.itemView == null){
-            this.itemView = LayoutInflater.from(context).inflate(R.layout.item_playergroup, parent, true);
+        if (itemView == null){
             try {
-                if(this.itemView == null){
+                if(itemView == null){
                     throw new IllegalStateException("Can not operate on view == null");
                 }
             } catch (IllegalStateException e) {
                 LOG.error("Die ItemView für den"+ this.getClass().getSimpleName() +"ist null", e);
+                return itemView;
             }
         }
 

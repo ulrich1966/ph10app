@@ -1,6 +1,7 @@
 package de.auli.ph10app.activity;
 
 import android.content.Context;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.AttributeSet;
@@ -11,11 +12,12 @@ import de.auli.ph10app.R;
 import de.auli.ph10app.fragment.PlayerFragment;
 import de.auli.ph10app.util.AppLogger;
 
-public class PlayerActivity extends AppCompatActivity implements Ph10Activity {
+public class PlayerActivity extends Ph10Activity {
     private static final AppLogger LOG = new AppLogger(PlayerActivity.class, false);
     private View rootView;
+    private Fragment playerFragment = new PlayerFragment();
 
-
+    // Activity needs defaultconstructor
     public PlayerActivity() {
         super();
     }
@@ -27,11 +29,35 @@ public class PlayerActivity extends AppCompatActivity implements Ph10Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         LOG.log("your'r arrived --> onCreate");
+        super.onCreate(savedInstanceState);
+        //super.onRestoreInstanceState(savedInstanceState);
+
         setContentView(R.layout.activity_player);
-        // Activity needs defaultconstructor
         setupClickListener();
+
+        if(savedInstanceState == null){
+            getSupportFragmentManager().beginTransaction().add(R.id.fragment_player, playerFragment).commit();
+        } else {
+            Long value = savedInstanceState.getLong("groupId");
+            LOG.log("value og groupId:", value);
+        }
+
+        /*
+
+        FragmentManager fm = getSupportFragmentManager();
+        fm.getFragment(, )
+
+        Bundle arguments = new Bundle();
+        arguments.putInt("VALUE1", 0);
+        arguments.putInt("VALUE2", 100);
+         */
+
+        //MyFragment myFragment = new Fragment();
+        //fragment.setArguments(arguments);
+
+        //fm.beginTransaction().replace(R.id.content_frame, myFragment).commit();
+
     }
 
     @Override

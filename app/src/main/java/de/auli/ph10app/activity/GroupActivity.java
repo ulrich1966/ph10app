@@ -7,19 +7,12 @@ import android.util.AttributeSet;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-
 import de.auli.ph10app.R;
-import de.auli.ph10app.adapter.PlayerListAdapter;
-import de.auli.ph10app.handler.PlayerRequestHandler;
-import de.auli.ph10app.model.Player;
-import de.auli.ph10app.util.ApiUrl;
 import de.auli.ph10app.util.AppLogger;
 
-public class GroupActivity extends AppCompatActivity implements Ph10Activity {
+public class GroupActivity extends Ph10Activity {
     private static final AppLogger LOG = new AppLogger(GroupActivity.class, true);
     private View rootView;
     private ImageButton cmdAddGroup;

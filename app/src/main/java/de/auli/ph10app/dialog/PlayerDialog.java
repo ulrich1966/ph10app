@@ -43,6 +43,7 @@ public class PlayerDialog extends AlertDialog {
     protected void onCreate(Bundle bundle) {
         LOG.log("onCreate", groupId, name);
         View dialogView = LayoutInflater.from(root.getContext()).inflate(R.layout.dialog_player, null, false);
+        Long value = null;
 
         if (dialogView != null) {
             setContentView(dialogView);
@@ -68,24 +69,37 @@ public class PlayerDialog extends AlertDialog {
             });
 
             /*
-            * call in fragment
-            */
 
              //Vesuchen die Frgament Ansicht zu bekommen ...
             final View frgmtView  = LayoutInflater.from(getContext()).inflate(R.layout.fragment_player, null, false);
             // ... in der sich das ListView - Element bfindet, in das die Daten geschrieben werden sollen.
-            ListView groupListView = (ListView) frgmtView.findViewById(R.id.livi_groups);
+            final ListView listView = (ListView) frgmtView.findViewById(R.id.livi_player);
             // ... Instanz eines ArrayAdapter besorten ...
-            PlayerListAdapter listAdapter = new PlayerListAdapter(getContext(), R.layout.fragment_player, new ArrayList<Player>());
+            final PlayerListAdapter listAdapter = new PlayerListAdapter(getContext(), R.layout.fragment_player, new ArrayList<Player>());
+
+            listView.setAdapter(listAdapter);
+
             // ... der dem Requesthaenler mitgegeben wird, damit er was hat, in dass er die Daten schreiben kann
-            PlayerRequestHandler handler = new PlayerRequestHandler(listAdapter, Player.class);
+            final PlayerRequestHandler handler = new PlayerRequestHandler(listAdapter, Player.class);
             // ... jetz fehlt noch die richtige URL fuer den REST-Service und und der GET-Request wird abgeschickt.
             // ... Und waerend wir jetzt was anderes machen, fuellt der Handler in einem asynconen Task die Liste im ArrayAdapter ... vielleicht ... wenn alles gut geht ...
             handler.GET(handler.createUrl(ApiUrl.PLAYER_IN_GROUP, Long.valueOf(groupId)));
+             */
 
             //Intent mIntent = new Intent(getContext(), PlayerActivity.class) ;
             //Bundle extras = mIntent.getExtras();
-            //extras.putLong("currentId", Long.valueOf(groupId));
+
+            try {
+                value = Long.valueOf(groupId);
+            } catch (NumberFormatException e) {
+                LOG.error("Du hast kein Long als goupID", e);
+            }
+
+            Bundle bundel = new Bundle();
+            bundel.putLong("groupId", value); //Your id
+            Intent intent = new Intent(getContext(), PlayerActivity.class);
+            intent.putExtras(bundel); //Put your id to your next Intent
+            getContext().startActivity(intent);
 
         } else {
             setMessage("Du hast keine View");

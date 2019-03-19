@@ -43,7 +43,7 @@
         </activity>
         <activity
             android:name=".activity.PlayerActivity"
-            android:label="@string/lbl_group"
+            android:label="@string/lbl_player"
             android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait">
             <meta-data
@@ -60,7 +60,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.auli.ph10app.MainActivity" />
         </activity>
-        <activity android:name=".activity.DialogActivity"/>
     </application>
 
 </manifest>
