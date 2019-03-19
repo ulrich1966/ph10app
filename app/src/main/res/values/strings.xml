@@ -18,8 +18,9 @@
     <string name="welcome_player">Hallo Spieler</string>
     <string name="head_playerlist">Spielerliste</string>
     <string name="lbl_player">Spieler verwalten</string>
-    <string name="player_name">Spielername</string>
     <string name="players_show_for_groups">Spieler dieser Gruppe anzeigen</string>
+    <string name="player_name">Spielername</string>
+    <string name="players_in_group">Spieler in der Gruppe</string>
 
     <!-- Session -->
     <string name="menu_session">Spielrunden</string>
@@ -43,4 +44,5 @@
     </string>
     <string name="cmd_ok">OK</string>
     <string name="cmd_cancel">Abbruch</string>
+    <string name="msg_bad_request">Fehlerhafte URL. Daten können nicht vom Server geholte werden!</string>
 </resources>

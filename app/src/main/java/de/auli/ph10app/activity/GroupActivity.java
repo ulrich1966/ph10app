@@ -41,8 +41,12 @@ public class GroupActivity extends AppCompatActivity implements Ph10Activity {
     @Override
     protected void onStart() {
         super.onStart();
-        if (this.rootView == null) {
-            throw new IllegalStateException("The atached view must not be null");
+        try {
+            if (this.rootView == null) {
+                throw new IllegalStateException("The atached view must not be null");
+            }
+        } catch (IllegalStateException e) {
+            LOG.error(e.getMessage(), e);
         }
         LOG.log("--> view is build and you'r arrived --> onStart");
     }

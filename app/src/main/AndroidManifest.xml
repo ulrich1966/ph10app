@@ -60,6 +60,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.auli.ph10app.MainActivity" />
         </activity>
+        <activity android:name=".activity.DialogActivity"/>
     </application>
 
 </manifest>

@@ -56,4 +56,8 @@ public class AppLogger {
     public void error(String msg, Exception e) {
         Log.e(className, msg, e);
     }
+
+    public void error(String msg, Object value, Exception e) {
+        Log.e(className, String.format("%s %s",msg, value), e);
+    }
 }

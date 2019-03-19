@@ -3,10 +3,12 @@ package de.auli.ph10app.handler;
 import android.widget.ArrayAdapter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.auli.ph10app.util.ApiUrl;
+import de.auli.ph10app.util.AppSettings;
 
 public abstract class Handler extends HttpRequestHandler implements HandlerAble {
     private static final String TAG = Handler.class.getSimpleName();
-    private static final String rootUrl = ApiUrl.REMOTE_BASE;
+    // Set to local or remote in AppSettings
+    private static final String rootUrl = AppSettings.CURRENT_SERVER_BASE;
     protected ObjectMapper mapper = new ObjectMapper();
 
     public Handler(ArrayAdapter adapter, Class clazz) {

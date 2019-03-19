@@ -23,6 +23,7 @@ public class PlayerRequestHandler extends Handler {
 
     @Override
     public void GET(String apiRequest) {
+        adapter.clear();
         final String url = createUrl(apiRequest);
         LOG.log("request goes to:", url);
         Object[] params = new Object[]{"GET", "application/json", url};
@@ -31,6 +32,7 @@ public class PlayerRequestHandler extends Handler {
 
     @Override
     public void POST(String apiRequest) {
+        adapter.clear();
         final String url = createUrl(apiRequest);
         LOG.log("request goes to:", url);
         Object[] params = new Object[]{"POST", "application/json", url};
@@ -39,6 +41,7 @@ public class PlayerRequestHandler extends Handler {
 
     @Override
     public void PUT(String apiRequest) {
+        adapter.clear();
         final String url = createUrl(apiRequest);
         LOG.log("request goes to:", url);
         Object[] params = new Object[]{"GET", "application/json", url};
@@ -47,12 +50,14 @@ public class PlayerRequestHandler extends Handler {
 
     @Override
     public void DELETE(String apiRequest) {
+        adapter.clear();
         final String url = createUrl(apiRequest);
         LOG.log("request goes to:", url);
         Object[] params = new Object[]{"DELETE", "application/json", url};
         execute(params);
     }
 
+    // marshalling of Object
     @Override
     protected void onPostExecute(Object result) {
         super.onPostExecute(result);

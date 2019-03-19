@@ -4,20 +4,15 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import de.auli.ph10app.R;
-import de.auli.ph10app.activity.GroupActivity;
 import de.auli.ph10app.adapter.PlayerGroupListAdapter;
 import de.auli.ph10app.adapter.PlayerListAdapter;
 import de.auli.ph10app.handler.GroupRequestHandler;

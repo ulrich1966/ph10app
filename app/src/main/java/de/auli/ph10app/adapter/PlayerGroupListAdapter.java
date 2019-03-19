@@ -1,6 +1,7 @@
 package de.auli.ph10app.adapter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.view.LayoutInflater;
@@ -15,8 +16,12 @@ import java.util.List;
 
 import de.auli.ph10app.R;
 import de.auli.ph10app.dialog.PlayerDialog;
+import de.auli.ph10app.model.Player;
 import de.auli.ph10app.model.PlayerGroup;
 import de.auli.ph10app.util.AppLogger;
+
+import static android.content.Context.MODE_PRIVATE;
+import static de.auli.ph10app.util.AppSettings.PREFS_NAME;
 
 public class PlayerGroupListAdapter extends ArrayAdapter<PlayerGroup> {
     private static final AppLogger LOG = new AppLogger(PlayerGroupListAdapter.class, true);
@@ -55,21 +60,19 @@ public class PlayerGroupListAdapter extends ArrayAdapter<PlayerGroup> {
         currentModel = getItem(position);
 
         if (currentModel != null) {
+            // fetch compopnents
             final TextView txtName = itemView.findViewById(R.id.txt_playergroup_name);
             final TextView txtId = itemView.findViewById(R.id.txt_id);
             final TextView cmdMore = itemView.findViewById(R.id.cmd_players_show);
             final ImageButton cmdAddPlayer = itemView.findViewById(R.id.cmd_add_player);
+
+            // set up components
+            txtId.setText(""+currentModel.getId());
+            txtName.setText(""+currentModel.getName());
             cmdMore.setOnClickListener(new View.OnClickListener() {
-                @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
                 @Override
                 public void onClick(View view) {
-                    LOG.log("here happends some action soon", txtId.getText());
-                    //Toast.makeText(context, "There will be action soon!", Toast.LENGTH_SHORT).show();
-                    try {
-                        openDialog(Long.valueOf(txtId.getText().toString()), itemView);
-                    } catch (NumberFormatException e) {
-                        LOG.error("Wert nicht umwandelbar in Long", e);
-                    }
+                    openDialog(txtId.getText().toString(), itemView, txtName.getText().toString());
                 }
             });
 
@@ -84,8 +87,13 @@ public class PlayerGroupListAdapter extends ArrayAdapter<PlayerGroup> {
         return itemView;
     }
 
-    private void openDialog(Long id, View root) {
-        PlayerDialog dialog = new PlayerDialog(root, id);
+    private void openDialog(String groupId, View root, String name) {
+        // keep the current Id for PlayGroup for PlayerFragment
+        SharedPreferences.Editor editor = getContext().getSharedPreferences(PREFS_NAME, MODE_PRIVATE).edit();
+        editor.putString("groupId", groupId);
+        editor.putString("ignore", "true");
+        editor.apply();
+        PlayerDialog dialog = new PlayerDialog(root, groupId, name);
         dialog.show();
     }
 

@@ -1,5 +1,6 @@
 package de.auli.ph10app.fragment;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -7,13 +8,28 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 import de.auli.ph10app.R;
+import de.auli.ph10app.adapter.PlayerListAdapter;
+import de.auli.ph10app.handler.GroupRequestHandler;
+import de.auli.ph10app.handler.PlayerRequestHandler;
+import de.auli.ph10app.model.Player;
+import de.auli.ph10app.model.PlayerGroup;
+import de.auli.ph10app.util.ApiUrl;
 import de.auli.ph10app.util.AppLogger;
 
+import static android.content.Context.MODE_PRIVATE;
+import static de.auli.ph10app.util.AppSettings.PREFS_NAME;
+
 public class PlayerFragment extends Fragment {
-    private static final AppLogger LOG = new AppLogger(PlayerFragment.class, false);
-    private static final String TAG = PlayerFragment.class.getSimpleName();
+    private static final AppLogger LOG = new AppLogger(PlayerFragment.class, true);
+    private ViewGroup container;
+    private PlayerListAdapter listAdapter;
+    private PlayerRequestHandler handler;
 
     public PlayerFragment() {
         super();
@@ -23,6 +39,45 @@ public class PlayerFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         LOG.log("you'r arrived --> onCreateView");
-        return inflater.inflate(R.layout.fragment_player, container, false);
+        // set container for further pourose
+        this.container = container;
+        // find the view with listview in it and maby other elements (mostly the fragment_view)
+        final View rootView = inflater.inflate(R.layout.fragment_player, container, false);
+        // we need the listView witch will receive the data and witch should resist in the fragment_view we just made to the rootView
+        ListView playerListView = (ListView) rootView.findViewById(R.id.livi_player);
+        // At least have to instantiate the ArrayAdapter
+        listAdapter = new PlayerListAdapter(getActivity(), R.layout.fragment_player, new ArrayList<Player>());
+        // return the just created  rootView
+        return rootView;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        SharedPreferences prefs = getActivity().getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        String groupId = prefs.getString("groupId", null);
+        String igmore = prefs.getString("ignore", null);
+        if(igmore.equals("true")){
+            return;
+        }
+        if (groupId != null) {
+            LOG.log("Suche Spieler der Gruppe mit ID:", groupId);
+            Long id = 0l;
+            try {
+                id = Long.valueOf(groupId);
+            } catch (NumberFormatException e) {
+                LOG.error("Kein gueltiger Integer fuer:", groupId, e);
+                Toast.makeText(getContext(), R.string.msg_bad_request, Toast.LENGTH_LONG);
+            }
+            // get us an handler for asyncon http-requests
+            LOG.log("you'r arrived --> onStart ... die Daten werden vom Server geholt");
+            handler = new PlayerRequestHandler(listAdapter, PlayerGroup.class);
+            handler.GET(handler.createUrl(ApiUrl.PLAYER_IN_GROUP, id));
+        }
     }
 }

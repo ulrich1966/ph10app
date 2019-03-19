@@ -8,19 +8,19 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/txt_player_name"
+        android:id="@+id/itm_txt_player_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin"
         android:hint="@string/player_name"
         android:textSize="@dimen/big"
-        app:layout_constraintBottom_toBottomOf="@+id/img_avatar"
-        app:layout_constraintEnd_toStartOf="@+id/img_avatar"
+        app:layout_constraintBottom_toBottomOf="@+id/img_player_avatar"
+        app:layout_constraintEnd_toStartOf="@+id/img_player_avatar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/img_avatar" />
+        app:layout_constraintTop_toTopOf="@+id/img_player_avatar" />
 
     <ImageView
-        android:id="@+id/img_avatar"
+        android:id="@+id/img_player_avatar"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_margin="@dimen/margin"
