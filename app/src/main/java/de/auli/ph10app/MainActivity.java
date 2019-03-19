@@ -37,7 +37,11 @@ public class MainActivity extends AppCompatActivity {
     public void actionPlayer(MenuItem item) {
         Toast.makeText(MainActivity.this, "actionPlayer", Toast.LENGTH_SHORT).show();
         LOG.log("actionPlayer kicks you to --> ", PlayerActivity.class.getSimpleName());
-        startActivity(new Intent(this, PlayerActivity.class));
+        Intent intent= new Intent(this, PlayerActivity.class);
+        Bundle params = new Bundle();
+        params.putInt("id", 0);
+        intent.putExtras(params);
+        startActivity(intent);
     }
 
     public void actionSession(MenuItem item) {

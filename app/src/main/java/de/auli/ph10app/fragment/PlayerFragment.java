@@ -31,8 +31,8 @@ public class PlayerFragment extends Fragment {
     private PlayerListAdapter listAdapter;
     private PlayerRequestHandler handler;
 
-    public PlayerFragment() {
-        super();
+    public PlayerFragment(){
+        // Activity needs defaultconstructor
     }
 
     @Nullable
@@ -58,26 +58,20 @@ public class PlayerFragment extends Fragment {
 
     @Override
     public void onStart() {
+        LOG.log("start getting data in -->   onCreateView");
         super.onStart();
-        SharedPreferences prefs = getActivity().getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        String groupId = prefs.getString("groupId", null);
-        String igmore = prefs.getString("ignore", null);
-        if(igmore.equals("true")){
-            return;
-        }
-        if (groupId != null) {
-            LOG.log("Suche Spieler der Gruppe mit ID:", groupId);
-            Long id = 0l;
-            try {
-                id = Long.valueOf(groupId);
-            } catch (NumberFormatException e) {
-                LOG.error("Kein gueltiger Integer fuer:", groupId, e);
-                Toast.makeText(getContext(), R.string.msg_bad_request, Toast.LENGTH_LONG);
-            }
-            // get us an handler for asyncon http-requests
-            LOG.log("you'r arrived --> onStart ... die Daten werden vom Server geholt");
+        Long currentId = getActivity().getIntent().getExtras().getLong("currentId");
+        if (currentId != null) {
             handler = new PlayerRequestHandler(listAdapter, PlayerGroup.class);
-            handler.GET(handler.createUrl(ApiUrl.PLAYER_IN_GROUP, id));
+            if(currentId <= 0 || currentId == null){
+                // Players of group
+                LOG.log("Suche Spieler der Gruppe mit ID:", currentId );
+                handler.GET(handler.createUrl(ApiUrl.PLAYER_IN_GROUP, currentId));
+            } else {
+                // all Players
+                LOG.log("you'r arrived --> onStart ... die Daten werden vom Server geholt");
+                handler.GET(handler.createUrl(ApiUrl.PLAYER_IN_GROUP));
+            }
+
         }
     }
-}

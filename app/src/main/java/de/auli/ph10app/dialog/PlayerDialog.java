@@ -1,5 +1,6 @@
 package de.auli.ph10app.dialog;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -13,7 +14,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import de.auli.ph10app.R;
+import de.auli.ph10app.activity.PlayerActivity;
 import de.auli.ph10app.adapter.PlayerListAdapter;
+import de.auli.ph10app.fragment.PlayerFragment;
 import de.auli.ph10app.handler.PlayerRequestHandler;
 import de.auli.ph10app.model.Player;
 import de.auli.ph10app.util.ApiUrl;
@@ -79,6 +82,10 @@ public class PlayerDialog extends AlertDialog {
             // ... jetz fehlt noch die richtige URL fuer den REST-Service und und der GET-Request wird abgeschickt.
             // ... Und waerend wir jetzt was anderes machen, fuellt der Handler in einem asynconen Task die Liste im ArrayAdapter ... vielleicht ... wenn alles gut geht ...
             handler.GET(handler.createUrl(ApiUrl.PLAYER_IN_GROUP, Long.valueOf(groupId)));
+
+            Intent mIntent = new Intent(getContext(), PlayerActivity.class) ;
+            Bundle extras = mIntent.getExtras();
+            extras.putLong("currentId", Long.valueOf(groupId));
 
         } else {
             setMessage("Du hast keine View");

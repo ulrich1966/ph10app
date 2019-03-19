@@ -54,7 +54,7 @@ public class PlayerGroupListAdapter extends ArrayAdapter<PlayerGroup> {
     public View getView(int position, View convertView, final ViewGroup parent) {
         this.itemView = convertView;
         if (this.itemView == null){
-            this.itemView = LayoutInflater.from(context).inflate(R.layout.item_playergroup, parent, false);
+            this.itemView = LayoutInflater.from(context).inflate(R.layout.item_playergroup, parent, true);
         }
 
         currentModel = getItem(position);
@@ -88,11 +88,6 @@ public class PlayerGroupListAdapter extends ArrayAdapter<PlayerGroup> {
     }
 
     private void openDialog(String groupId, View root, String name) {
-        // keep the current Id for PlayGroup for PlayerFragment
-        SharedPreferences.Editor editor = getContext().getSharedPreferences(PREFS_NAME, MODE_PRIVATE).edit();
-        editor.putString("groupId", groupId);
-        editor.putString("ignore", "true");
-        editor.apply();
         PlayerDialog dialog = new PlayerDialog(root, groupId, name);
         dialog.show();
     }

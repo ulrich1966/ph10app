@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import de.auli.ph10app.R;
+import de.auli.ph10app.fragment.PlayerFragment;
 import de.auli.ph10app.util.AppLogger;
 
 public class PlayerActivity extends AppCompatActivity implements Ph10Activity {
@@ -19,6 +20,10 @@ public class PlayerActivity extends AppCompatActivity implements Ph10Activity {
         super.onCreate(savedInstanceState);
         LOG.log("your'r arrived --> onCreate");
         setContentView(R.layout.activity_player);
+        savedInstanceState.putLong("currentId", 0);
+        // Activity needs defaultconstructor
+
+
         setupClickListener();
     }
 
