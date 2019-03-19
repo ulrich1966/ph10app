@@ -30,20 +30,19 @@
             android:layout_margin="@dimen/margin"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_group_48" />
+            app:srcCompat="@drawable/ic_add_group_48" />
 
         <TextView
             android:id="@+id/pld_txt_group_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:textColor="@color/colorTxtWhite"
             android:text="@string/loremipsum_5"
+            android:textColor="@color/colorTxtWhite"
             android:textSize="@dimen/big"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/pld_txt_head"
-            app:layout_constraintTop_toBottomOf="@+id/pld_txt_head" />
+            app:layout_constraintStart_toStartOf="@+id/pld_txt_head" />
 
         <ImageButton
             android:id="@+id/pld_cmd_close"

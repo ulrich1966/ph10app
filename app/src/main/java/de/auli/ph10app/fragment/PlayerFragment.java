@@ -72,6 +72,4 @@ public class PlayerFragment extends Fragment {
                 LOG.log("you'r arrived --> onStart ... die Daten werden vom Server geholt");
                 handler.GET(handler.createUrl(ApiUrl.PLAYER_IN_GROUP));
             }
-
-        }
     }
