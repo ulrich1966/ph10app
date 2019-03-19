@@ -83,9 +83,9 @@ public class PlayerDialog extends AlertDialog {
             // ... Und waerend wir jetzt was anderes machen, fuellt der Handler in einem asynconen Task die Liste im ArrayAdapter ... vielleicht ... wenn alles gut geht ...
             handler.GET(handler.createUrl(ApiUrl.PLAYER_IN_GROUP, Long.valueOf(groupId)));
 
-            Intent mIntent = new Intent(getContext(), PlayerActivity.class) ;
-            Bundle extras = mIntent.getExtras();
-            extras.putLong("currentId", Long.valueOf(groupId));
+            //Intent mIntent = new Intent(getContext(), PlayerActivity.class) ;
+            //Bundle extras = mIntent.getExtras();
+            //extras.putLong("currentId", Long.valueOf(groupId));
 
         } else {
             setMessage("Du hast keine View");

@@ -31,7 +31,7 @@ public class PlayerFragment extends Fragment {
     private PlayerListAdapter listAdapter;
     private PlayerRequestHandler handler;
 
-    public PlayerFragment(){
+    public PlayerFragment() {
         // Activity needs defaultconstructor
     }
 
@@ -60,16 +60,21 @@ public class PlayerFragment extends Fragment {
     public void onStart() {
         LOG.log("start getting data in -->   onCreateView");
         super.onStart();
-        Long currentId = getActivity().getIntent().getExtras().getLong("currentId");
+        //Long currentId = getActivity().getIntent().getExtras().getLong("currentId");
+        Long currentId = 0l;
+
         if (currentId != null) {
             handler = new PlayerRequestHandler(listAdapter, PlayerGroup.class);
-            if(currentId <= 0 || currentId == null){
-                // Players of group
-                LOG.log("Suche Spieler der Gruppe mit ID:", currentId );
-                handler.GET(handler.createUrl(ApiUrl.PLAYER_IN_GROUP, currentId));
-            } else {
+            if (currentId <= 0 || currentId == null) {
                 // all Players
-                LOG.log("you'r arrived --> onStart ... die Daten werden vom Server geholt");
-                handler.GET(handler.createUrl(ApiUrl.PLAYER_IN_GROUP));
+                LOG.log("Alle Spieler werden vom Server geholt");
+                handler.GET(handler.createUrl(ApiUrl.PLAYER));
+            } else {
+                // Players of group
+                LOG.log("Suche Spieler der Gruppe mit ID:", currentId);
+                handler.GET(handler.createUrl(ApiUrl.PLAYER_IN_GROUP, currentId));
             }
+        }
     }
+
+}

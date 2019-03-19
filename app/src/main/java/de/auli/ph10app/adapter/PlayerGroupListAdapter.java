@@ -53,8 +53,16 @@ public class PlayerGroupListAdapter extends ArrayAdapter<PlayerGroup> {
     @Override
     public View getView(int position, View convertView, final ViewGroup parent) {
         this.itemView = convertView;
+
         if (this.itemView == null){
-            this.itemView = LayoutInflater.from(context).inflate(R.layout.item_playergroup, parent, true);
+            this.itemView = LayoutInflater.from(context).inflate(R.layout.item_playergroup, parent, false);
+            try {
+                if(this.itemView == null){
+                    throw new IllegalStateException("Can not operate on view == null");
+                }
+            } catch (IllegalStateException e) {
+                LOG.error("Die ItemView für den"+ this.getClass().getSimpleName() +"ist null", e);
+            }
         }
 
         currentModel = getItem(position);

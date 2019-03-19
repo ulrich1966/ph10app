@@ -15,15 +15,22 @@ public class PlayerActivity extends AppCompatActivity implements Ph10Activity {
     private static final AppLogger LOG = new AppLogger(PlayerActivity.class, false);
     private View rootView;
 
+
+    public PlayerActivity() {
+        super();
+    }
+
+    public PlayerActivity(View rootView) {
+        this();
+        this.rootView = rootView;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         LOG.log("your'r arrived --> onCreate");
         setContentView(R.layout.activity_player);
-        savedInstanceState.putLong("currentId", 0);
         // Activity needs defaultconstructor
-
-
         setupClickListener();
     }
 

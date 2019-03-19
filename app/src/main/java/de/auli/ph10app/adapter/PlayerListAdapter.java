@@ -18,16 +18,17 @@ import de.auli.ph10app.util.AppLogger;
 public class PlayerListAdapter extends ArrayAdapter<Player> {
     private static final AppLogger LOG = new AppLogger(PlayerListAdapter.class, true);
     // rootView --> fragment_sessionstart
-    private int resourceLayout;
+    private final int resourceLayout;
     // aufrufende Activity
-    private Context mContext;
+    private final Context context;
     // Inhaltsliste
-    private List<Player> player;
+    private final  List<Player> player;
+    private View itemView;
 
     public PlayerListAdapter(Context context, int resource, List<Player> items) {
         super(context, resource, items);
         this.resourceLayout = resource;
-        this.mContext = context;
+        this.context = context;
         this.player = items;
     }
 
@@ -40,10 +41,18 @@ public class PlayerListAdapter extends ArrayAdapter<Player> {
      */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View itemView = convertView;
+        this.itemView = convertView;
 
-        if(itemView == null)
-            itemView = LayoutInflater.from(mContext).inflate(R.layout.item_player, parent,false);
+        if (this.itemView == null){
+            this.itemView = LayoutInflater.from(context).inflate(R.layout.item_playergroup, parent, true);
+            try {
+                if(this.itemView == null){
+                    throw new IllegalStateException("Can not operate on view == null");
+                }
+            } catch (IllegalStateException e) {
+                LOG.error("Die ItemView für den"+ this.getClass().getSimpleName() +"ist null", e);
+            }
+        }
 
         Player model = getItem(position);
         LOG.log("getView ID", model.getId());
@@ -53,7 +62,7 @@ public class PlayerListAdapter extends ArrayAdapter<Player> {
             final TextView txtName = itemView.findViewById(R.id.itm_txt_player_name);
             final ImageView imgAvatar = itemView.findViewById(R.id.img_player_avatar);
             // Find a nice Icon and make a Drawable from it
-            final Drawable pic = getContext().getResources().getDrawable(R.drawable.ic_android72);
+            final Drawable pic = getContext().getResources().getDrawable(R.drawable.ic_android_48);
 
             txtName.setText(model.getName());
 
