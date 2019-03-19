@@ -46,13 +46,15 @@ public class PlayerFragment extends Ph10Fragment<Player> {
         listView.setAdapter(listAdapter);
 
         Bundle bundle = getArguments();
-        if(bundle != null){
+        if (bundle != null) {
             try {
                 Player model = (Player) getMarshallService().marshall(bundle.getString("player"), Player.class);
                 setModel(model);
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        } else {
+            LOG.log("Keine Parameter im Bundlel gefunden");
         }
         return rootView;
     }
@@ -96,7 +98,7 @@ public class PlayerFragment extends Ph10Fragment<Player> {
          */
     }
 
-    public void setPerson(Player person){
+    public void setPerson(Player person) {
         this.person = person;
     }
 
