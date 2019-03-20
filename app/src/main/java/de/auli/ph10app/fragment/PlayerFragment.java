@@ -68,34 +68,26 @@ public class PlayerFragment extends Ph10Fragment<Player> {
     public void onStart() {
         LOG.log("start getting data in -->   onCreateView");
         super.onStart();
-        //Long currentId = null;
 
         Player player = (Player) getModel();
-        LOG.log(player.toString());
-
-        /*
-
-        // You have not an Id ... bad on you  ...
-        if (currentId == null) {
-            //currentId = 0l;
-            return;
+        if (player != null) {
+            LOG.log(player.toString());
         }
 
+
+        Long currentId = null;
+
+        handler = new PlayerRequestHandler(listAdapter, PlayerGroup.class);
         LOG.log(currentId);
-
-        if (currentId != null) {
-            handler = new PlayerRequestHandler(listAdapter, PlayerGroup.class);
-            if (currentId <= 0 || currentId == null) {
-                // all Players
-                LOG.log("Alle Spieler werden vom Server geholt");
-                handler.GET(handler.createUrl(ApiUrl.PLAYER));
-            } else {
-                // Players of group
-                LOG.log("Suche Spieler der Gruppe mit ID:", currentId);
-                handler.GET(handler.createUrl(ApiUrl.PLAYER_IN_GROUP, currentId));
-            }
+        if (currentId <= 0 || currentId == null) {
+            // all Players
+            LOG.log("Alle Spieler werden vom Server geholt");
+            handler.GET(handler.createUrl(ApiUrl.PLAYER));
+        } else {
+            // Players of group
+            LOG.log("Suche Spieler der Gruppe mit ID:", currentId);
+            handler.GET(handler.createUrl(ApiUrl.PLAYER_IN_GROUP, currentId));
         }
-         */
     }
 
     public void setPerson(Player person) {
