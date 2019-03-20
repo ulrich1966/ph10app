@@ -18,6 +18,7 @@ import de.auli.ph10app.model.Player;
 import de.auli.ph10app.model.PlayerGroup;
 import de.auli.ph10app.util.ApiUrl;
 import de.auli.ph10app.util.AppLogger;
+import de.auli.ph10app.util.AppSession;
 
 public class PlayerFragment extends Ph10Fragment<Player> {
     private static final AppLogger LOG = new AppLogger(PlayerFragment.class, true);
@@ -68,18 +69,16 @@ public class PlayerFragment extends Ph10Fragment<Player> {
     public void onStart() {
         LOG.log("start getting data in -->   onCreateView");
         super.onStart();
-
-        Player player = (Player) getModel();
-        if (player != null) {
-            LOG.log(player.toString());
+        Long currentId = null;
+        try {
+            currentId = (Long) AppSession.getValue("groupId");
+            LOG.log("Hole Spieler für Gruppe mit Id", currentId);
+        } catch (Exception e) {
+            LOG.error("Kein varlieder Long:", AppSession.getValue("groupId"),  e);
         }
 
-
-        Long currentId = null;
-
         handler = new PlayerRequestHandler(listAdapter, PlayerGroup.class);
-        LOG.log(currentId);
-        if (currentId <= 0 || currentId == null) {
+        if (currentId == null || currentId <= 0) {
             // all Players
             LOG.log("Alle Spieler werden vom Server geholt");
             handler.GET(handler.createUrl(ApiUrl.PLAYER));

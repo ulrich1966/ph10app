@@ -21,6 +21,7 @@ import de.auli.ph10app.handler.PlayerRequestHandler;
 import de.auli.ph10app.model.Player;
 import de.auli.ph10app.util.ApiUrl;
 import de.auli.ph10app.util.AppLogger;
+import de.auli.ph10app.util.AppSession;
 
 import static android.content.Context.MODE_PRIVATE;
 import static de.auli.ph10app.util.AppSettings.PREFS_NAME;
@@ -91,15 +92,11 @@ public class PlayerDialog extends AlertDialog {
 
             try {
                 value = Long.valueOf(groupId);
+                AppSession.addValue("groupId", groupId);
             } catch (NumberFormatException e) {
                 LOG.error("Du hast kein Long als goupID", e);
             }
 
-            Bundle bundel = new Bundle();
-            bundel.putLong("groupId", value); //Your id
-            Intent intent = new Intent(getContext(), PlayerActivity.class);
-            intent.putExtras(bundel); //Put your id to your next Intent
-            getContext().startActivity(intent);
 
         } else {
             setMessage("Du hast keine View");

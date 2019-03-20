@@ -39,38 +39,6 @@ public class PlayerActivity extends Ph10Activity {
 
         setContentView(R.layout.activity_player);
         setupClickListener();
-
-        if(savedInstanceState == null){
-            String playerAsJson = null;
-            try {
-                playerAsJson = getMarshallService().unmarshall(new Player("Hein Mück", "Moin", null));
-            } catch (JsonProcessingException e) {
-                e.printStackTrace();
-            };
-
-            Bundle bundle = new Bundle();
-            bundle.putString("player", playerAsJson);
-            getSupportFragmentManager().beginTransaction().add(R.id.fragment_player, playerFragment).commit();
-        } else {
-            Long value = savedInstanceState.getLong("groupId");
-            LOG.log("value og groupId:", value);
-        }
-
-        /*
-
-        FragmentManager fm = getSupportFragmentManager();
-        fm.getFragment(, )
-
-        Bundle arguments = new Bundle();
-        arguments.putInt("VALUE1", 0);
-        arguments.putInt("VALUE2", 100);
-         */
-
-        //MyFragment myFragment = new Fragment();
-        //fragment.setArguments(arguments);
-
-        //fm.beginTransaction().replace(R.id.content_frame, myFragment).commit();
-
     }
 
     @Override
