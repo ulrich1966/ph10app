@@ -10,9 +10,10 @@ import de.auli.ph10app.model.Player;
 import de.auli.ph10app.model.PlayerGroup;
 import de.auli.ph10app.util.ApiUrl;
 import de.auli.ph10app.util.AppLogger;
+import de.auli.ph10app.util.AppSettings;
 
 public class PlayerRequestHandler extends Handler {
-    private static final AppLogger LOG = new AppLogger(PlayerRequestHandler.class, false);
+    private static final AppLogger LOG = new AppLogger(PlayerRequestHandler.class, AppSettings.LOG_HANDLER);
     private String modelList = ApiUrl.PLAYER;
     private String model = ApiUrl.PLAYER_ID;
     private String playerInGroup = ApiUrl.PLAYER_IN_GROUP;

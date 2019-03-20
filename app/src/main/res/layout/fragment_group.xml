@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context="de.auli.ph10app.fragment.GroupFragment">
 
-    <ListView
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/livi_groups"
         android:layout_width="match_parent"
         android:layout_height="0dp"

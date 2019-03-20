@@ -19,9 +19,10 @@ import de.auli.ph10app.model.PlayerGroup;
 import de.auli.ph10app.util.ApiUrl;
 import de.auli.ph10app.util.AppLogger;
 import de.auli.ph10app.util.AppSession;
+import de.auli.ph10app.util.AppSettings;
 
 public class PlayerFragment extends Ph10Fragment<Player> {
-    private static final AppLogger LOG = new AppLogger(PlayerFragment.class, true);
+    private static final AppLogger LOG = new AppLogger(PlayerFragment.class, AppSettings.LOG_FRAGMENT);
     private ViewGroup container;
     private PlayerListAdapter listAdapter;
     private PlayerRequestHandler handler;
