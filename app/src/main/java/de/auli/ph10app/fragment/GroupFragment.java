@@ -3,6 +3,7 @@ package de.auli.ph10app.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,17 +46,25 @@ public class GroupFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //Logger.log(TAG, "you'r arrived --> onCreateView");
         this.container = container;
-        View rootView = inflater.inflate(R.layout.fragment_group, container, false);
-        ListView listView = (ListView) rootView.findViewById(R.id.livi_groups);
-        listAdapter = new PlayerGroupListAdapter(getActivity(), R.layout.fragment_group, new ArrayList<PlayerGroup>());
-        listView.setAdapter(listAdapter);
-        return rootView;
+        final ListView listView;
+        try {
+            final View rootView = inflater.inflate(R.layout.fragment_group, container, false);
+            listView = (ListView) rootView.findViewById(R.id.livi_groups);
+            listAdapter = new PlayerGroupListAdapter(getActivity(), R.layout.fragment_group, new ArrayList<PlayerGroup>());
+            listView.setAdapter(listAdapter);
+            return rootView;
+        } catch (InflateException e) {
+            LOG.error(e.getMessage(), null);
+        }
+        return null;
     }
 
     @Override
     public void onPause() {
         super.onPause();
     }
+
+
 
     @Override
     public void onStart() {

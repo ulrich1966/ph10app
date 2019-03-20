@@ -9,7 +9,7 @@
     tools:context="de.auli.ph10app.fragment.PlayerFragment">
 
     <ListView
-        android:id="@+id/livi_player"
+        android:id="@+id/id_listview_player"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@android:color/transparent"

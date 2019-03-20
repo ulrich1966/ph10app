@@ -1,9 +1,7 @@
 package de.auli.ph10app.adapter;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,13 +13,10 @@ import android.widget.Toast;
 import java.util.List;
 
 import de.auli.ph10app.R;
-import de.auli.ph10app.dialog.PlayerDialog;
-import de.auli.ph10app.model.Player;
+import de.auli.ph10app.activity.PlayerDialogActivity;
+import de.auli.ph10app.activity.PlayerGroupActivity;
 import de.auli.ph10app.model.PlayerGroup;
 import de.auli.ph10app.util.AppLogger;
-
-import static android.content.Context.MODE_PRIVATE;
-import static de.auli.ph10app.util.AppSettings.PREFS_NAME;
 
 public class PlayerGroupListAdapter extends ArrayAdapter<PlayerGroup> {
     private static final AppLogger LOG = new AppLogger(PlayerGroupListAdapter.class, true);
@@ -33,7 +28,6 @@ public class PlayerGroupListAdapter extends ArrayAdapter<PlayerGroup> {
     private final List<PlayerGroup> playerGroups;
     private View itemView;
 
-    private PlayerGroup currentModel;
     private PlayerListAdapter listAdapter;
 
     public PlayerGroupListAdapter(Context context, int resource, List<PlayerGroup> items) {
@@ -65,7 +59,7 @@ public class PlayerGroupListAdapter extends ArrayAdapter<PlayerGroup> {
             }
         }
 
-        currentModel = getItem(position);
+        final PlayerGroup currentModel = getItem(position);
 
         if (currentModel != null) {
             // fetch compopnents
@@ -80,7 +74,7 @@ public class PlayerGroupListAdapter extends ArrayAdapter<PlayerGroup> {
             cmdMore.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    openDialog(txtId.getText().toString(), itemView, txtName.getText().toString());
+                    openDialog(currentModel);
                 }
             });
 
@@ -95,9 +89,13 @@ public class PlayerGroupListAdapter extends ArrayAdapter<PlayerGroup> {
         return itemView;
     }
 
-    private void openDialog(String groupId, View root, String name) {
-        PlayerDialog dialog = new PlayerDialog(root, groupId, name);
-        dialog.show();
+
+    private void openDialog(PlayerGroup model) {
+        PlayerGroupActivity rootActivity = (PlayerGroupActivity) getContext();
+        Intent intent = new Intent(rootActivity, PlayerDialogActivity.class);
+        rootActivity.startActivity(intent);
+        //PlayerDialog dialog = new PlayerDialog(getContext(), model, rootActivity);
+        //dialog.show();
     }
 
     @Override

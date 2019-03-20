@@ -7,7 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import de.auli.ph10app.activity.GroupActivity;
+import de.auli.ph10app.activity.PlayerGroupActivity;
 import de.auli.ph10app.activity.PlayerActivity;
 import de.auli.ph10app.activity.SessionActivity;
 import de.auli.ph10app.activity.SessionStartActivity;
@@ -30,17 +30,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void actionGroup(MenuItem item) {
         Toast.makeText(MainActivity.this, "actionGroup", Toast.LENGTH_SHORT).show();
-        LOG.log("actionGroup kicks you to --> ", GroupActivity.class.getSimpleName());
-        startActivity(new Intent(this, GroupActivity.class));
+        LOG.log("actionGroup kicks you to --> ", PlayerGroupActivity.class.getSimpleName());
+        startActivity(new Intent(this, PlayerGroupActivity.class));
     }
 
     public void actionPlayer(MenuItem item) {
         Toast.makeText(MainActivity.this, "actionPlayer", Toast.LENGTH_SHORT).show();
         LOG.log("actionPlayer kicks you to --> ", PlayerActivity.class.getSimpleName());
         Intent intent= new Intent(this, PlayerActivity.class);
-        Bundle params = new Bundle();
-        params.putInt("id", 0);
-        intent.putExtras(params);
         startActivity(intent);
     }
 

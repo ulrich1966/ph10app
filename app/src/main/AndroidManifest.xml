@@ -33,7 +33,7 @@
                 android:value="de.auli.ph10app.MainActivity" />
         </activity>
         <activity
-            android:name=".activity.GroupActivity"
+            android:name=".activity.PlayerGroupActivity"
             android:label="@string/lbl_group"
             android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait">
@@ -60,6 +60,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.auli.ph10app.MainActivity" />
         </activity>
+        <activity
+            android:name=".activity.PlayerDialogActivity"
+            android:theme="@android:style/Theme.Dialog"
+            android:excludeFromRecents="true"/>
     </application>
 
 </manifest>
