@@ -19,7 +19,7 @@ import de.auli.ph10app.R;
  * A simple {@link Fragment} subclass.
  */
 public class PlayerDialogFragment extends DialogFragment {
-
+    private View rootView;
 
     public PlayerDialogFragment() {
         // Required empty public constructor
@@ -47,10 +47,12 @@ public class PlayerDialogFragment extends DialogFragment {
         }
     }
 
-
-
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+        getDialog().setContentView(rootView);
+/*
+
         // Build the dialog and set up the button click handlers
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setMessage(R.string.head_playerlist).setPositiveButton(R.string.cmd_ok, new DialogInterface.OnClickListener() {
@@ -65,7 +67,8 @@ public class PlayerDialogFragment extends DialogFragment {
                         listener.onDialogNegativeClick(PlayerDialogFragment.this);
                     }
                 });
-        return builder.create();
+ */
+        return getDialog();
     }
 
 
@@ -73,7 +76,7 @@ public class PlayerDialogFragment extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        final View rootView = inflater.inflate(R.layout.fragment_player_dialog, container, false);
+        rootView = inflater.inflate(R.layout.fragment_player_dialog, container, false);
         return rootView;
     }
 
