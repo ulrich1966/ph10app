@@ -62,8 +62,12 @@
         </activity>
         <activity
             android:name=".activity.PlayerDialogActivity"
-            android:theme="@android:style/Theme.Dialog"
-            android:excludeFromRecents="true"/>
+            android:label="@string/lbl_player_dlg"
+            android:parentActivityName=".activity.PlayerGroupActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="ExtraText">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="de.auli.ph10app.activity.PlayerGroupActivity" />
+        </activity>
     </application>
 
 </manifest>

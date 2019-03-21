@@ -10,8 +10,9 @@
     <fragment
         android:id="@+id/id_fragment_player_dialog"
         android:name="de.auli.ph10app.fragment.PlayerDialogFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        class="de.auli.ph10app.fragment.PlayerDialogFragment"
+        android:layout_width="@dimen/no_width"
+        android:layout_height="@dimen/no_height"
         android:layout_margin="@dimen/no_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
